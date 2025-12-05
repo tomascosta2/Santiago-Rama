@@ -108,7 +108,7 @@ export const TESTIMONIALS_VIDEO_PAGE = [
 
 
 export const CALENDLY_TITLE_PART1 =
-    "Nuestros clientes bajan entre 6 y 15 kg de grasa corporal en 3 meses.";
+    "Nuestros clientes bajan entre 8 y 20 kg de grasa corporal en 3 meses.";
 
 export const CALENDLY_SPAN = "Vos también podés";
 
