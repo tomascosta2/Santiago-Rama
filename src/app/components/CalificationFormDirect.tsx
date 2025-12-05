@@ -197,17 +197,17 @@ export default function CalificationFormDirect({ variant }: Props) {
           {
             value: 'presupuesto-bajo',
             label:
-              'Quiero una solución económica para empezar por mi cuenta. (En este caso NO agendes, para cambiar tu vida necesitás invertir)',
+              'Quiero una solución económica para empezar por mi cuenta. (En este caso NO agendes, para ayudarte necesitas algo personalizado)',
           },
           {
             value: 'presupuesto-intermedio',
             label:
-              'Quiero un plan serio, con un equipo de profesionales ayudándome 1 a 1.',
+              'Quiero un plan serio, con un equipo de profesionales ayudándome 1 a 1 y que sea algo 100% personalizado para asegurar mi cambio en los 3 meses de trabajo.',
           },
           {
             value: 'presupuesto-alto',
             label:
-              'Quiero la mejor opción disponible, se que cambiar mi fisico lo vale.',
+              'Quiero la mejor opción disponible independientemente del precio, se que mejorar mi fisico y salud lo vale.',
           },
         ],
       },
@@ -538,7 +538,7 @@ export default function CalificationFormDirect({ variant }: Props) {
           </div>
 
           <p className="text-white/70 text-xs mt-4">
-             PD: El método está diseñado para hombres ocupados; no es la típica rutina de
+            PD: El programa está diseñado para hombres ocupados; no es la típica rutina de
             influencer que solo puede cumplir un adolescente que vive con los padres, ni las dietas de moda que son insostenibles.
           </p>
         </form>

@@ -28,9 +28,7 @@ export default function CalendlyFast() {
       if (e.origin !== "https://calendly.com") return;
 
       if (e.data?.event === "calendly.event_scheduled") {
-        // https://hook.us2.make.com/2a7gkby3xtgo4annvy16nbu74laekhem
-
-        fetch("https://hook.us2.make.com/2a7gkby3xtgo4annvy16nbu74laekhem", {
+        fetch("https://n8n.srv953925.hstgr.cloud/webhook/93afbd79-b123-4b11-8004-77178f4ca678", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({

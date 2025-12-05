@@ -24,7 +24,7 @@ export const idThankyou = "panda-c2965b0d-2013-4ae6-b3ee-adffba85fade";
 export const srcThankyou = "https://player-vz-5c2adb98-6a4.tv.pandavideo.com/embed/?v=c2965b0d-2013-4ae6-b3ee-adffba85fade";
 
 // Make o n8n
-export const sendForm = ""
+export const sendForm = "https://n8n.srv953925.hstgr.cloud/webhook/19ffc8bc-f934-4d70-829a-c914d08509fc"
 
 export const VIDEO_TESTIMONIALS = [
     {
