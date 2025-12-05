@@ -21,7 +21,7 @@ export default function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsUnlocked(true);
-    }, .1 * 60 * 1000); // 5 minutos
+    }, 0 * 60 * 1000); // 5 minutos
 
     return () => clearTimeout(timer);
   }, []);
@@ -37,18 +37,11 @@ export default function Home() {
       {isFormOpened && <CalificationFormDirect variant={variant} />}
       <header className="bg-[var(--primary)] max-w-[85%] w-[400px] rounded-full mt-8 md:mt-12 mx-auto">
         <div className="cf-container">
-          <h3 className="text-center text-[var(--text-primary)] text-[14px] py-3 font-bold leading-[115%]">
-            {variant === "A" && (
-              <span>
-                Te exigis, te castigas, lo das todo… y aún así ¿no te reconoces
-                frente al espejo?
-              </span>
-            )}
-            {variant === "B" && (
-              <span>
-                ¿Tenes un buen trabajo pero te has dejado estar con tu fisico?
-              </span>
-            )}
+          <h3 className="text-center text-[var(--text-primary)] text-[14px] py-3 font-bold leading-[115%]">            
+            <span>
+              Te exigis, te castigas, lo das todo… y aún así ¿no te reconoces
+              frente al espejo?
+            </span>
           </h3>
         </div>
       </header>
@@ -57,17 +50,17 @@ export default function Home() {
       <section className="mt-6 md:mt-8 pb-[60px] md:pb-[80px]">
         <div className="cf-container">
           <h1 className="text-center text-[20px] md:text-[32px] font-bold leading-[120%]">
-            <span>
-              BAJÁ ENTRE{" "}
-              <span className="bg-[var(--primary)] text-[var(--text-primary)]">
-                8 Y 12 KG DE GRASA CORPORAL Y TONIFICÁ EN 90 DÍAS
-              </span>{" "}
-              CON MI{" "}
-              <span className="bg-[var(--primary)] text-[var(--text-primary)]">
-                MÉTODO PARA HOMBRES OCUPADOS
-              </span>{" "}
-              - SIN DIETAS EXTREMAS NI RUTINAS IMPOSIBLES
-            </span>
+            {variant === 'A' && (
+              <span>
+                Bajá entre <span className="bg-[var(--primary)] text-[var(--text-primary)]">6 y 15 kg de grasa corporal y tonificá en 90 días</span> con mi <span className="bg-[var(--primary)] text-[var(--text-primary)]">Protocolo Fit90</span> - sin dietas extremas ni rutinas imposibles
+              </span>
+            )}
+
+            {variant === 'B' && (
+              <span>
+                <span className="bg-[var(--primary)] text-[var(--text-primary)]">Perde la panza, gana energía y tonificá en 90 días</span> con mi protocolo <span className="bg-[var(--primary)] text-[var(--text-primary)]">Fit90</span> - sin dietas extremas ni rutinas imposibles
+              </span>
+            )}
           </h1>
           <section className="relative">
             <div className="bg-[var(--primary)] border-4 overflow-clip rounded-[12px] md:rounded-[16px] border-[var(--primary)] mt-6 max-w-[750px] mx-auto">
@@ -84,9 +77,8 @@ export default function Home() {
               </div>
             </div>
           </section>
-          <p className="mt-4 text-center text-[16px] max-w-[700px] mx-auto">
-            <strong>PASO 2 de 2:</strong> Agenda una Llamada para Asegurar tu
-            Lugar y tu Cambio Fisico.
+          <p className="mt-4 text-center text-[16px] max-w-[700px] mx-auto">          
+            <strong>PASO 2 de 2:</strong> Agenda una Llamada si te gustaria Trabajar con Nosotros.
           </p>
 
           {/* Botón bloqueado 5 minutos */}
@@ -103,7 +95,7 @@ export default function Home() {
             </button>
             <p className="text-center mt-4 text-white/60 italic mx-auto max-w-[350px] text-[14px]">
               {isUnlocked
-                ? "Cupos limitados - No te lo pierdas!"
+                ? "Este programa no es para todos. Solo trabajamos con 8 alumnos por mes. Si tu objetivo es lograr un resultado real, aplicá arriba."
                 : "⚠️ El botón se habilitará luego de ver el video."}
             </p>
           </div>
@@ -116,8 +108,9 @@ export default function Home() {
           <section className="py-[40px] relative z-20">
             <div className="cf-container">
               <h2 className="text-[28px] font-bold text-white text-center uppercase max-w-[500px] leading-[120%] mx-auto">
-                MATEO LO LOGRO ¿QUE ESTAS ESPERANDO?
+                ELLOS YA LO LOGRARON ¿QUE ESTAS ESPERANDO?
               </h2>
+              <p className="text-center text-white/80 mt-4">* Algunos estan difuminados por petición y privacidad del cliente</p>
               <div className="mt-8 max-w-[900px] mx-auto space-y-6">
                 {VIDEO_TESTIMONIALS.map((testimonial) => {
                   return (
@@ -165,14 +158,14 @@ export default function Home() {
                 ¡AGENDAR MI SESIÓN DE DIAGNÓSTICO!
               </button>
               <p className="text-center mt-4 text-white/60 italic mx-auto max-w-[350px] text-[14px]">
-                Cupos limitados - No te lo pierdas!
+                Este programa no es para todos. Solo trabajamos con 8 alumnos por mes. Si tu objetivo es lograr un resultado real, aplicá arriba.
               </p>
             </div>
           </section>
         </>
       )}
 
-      <section className="py-[60px] md:py-[80px] relative overflow-clip">
+      {/* <section className="py-[60px] md:py-[80px] relative overflow-clip">
         <div className="cf-container">
           <h2 className="text-[28px] font-bold text-white text-center uppercase max-w-[600px] leading-[120%] mx-auto">
             ESTOS RESULTADOS PODES OBTENER SI AGENDAS HOY
@@ -210,7 +203,6 @@ export default function Home() {
               />
             </div>
           </div>
-          {/* Botón bloqueado 5 minutos */}
           <div className="mt-8">
             <button
               className="cf-btn disabled:opacity-60 disabled:cursor-not-allowed"
@@ -224,17 +216,21 @@ export default function Home() {
             </button>
             <p className="text-center mt-4 text-white/60 italic mx-auto max-w-[350px] text-[14px]">
               {isUnlocked
-                ? "Cupos limitados - No te lo pierdas!"
+                ? "Este programa no es para todos. Solo trabajamos con 8 alumnos por mes. Si tu objetivo es lograr un resultado real, aplicá arriba."
                 : "⚠️ El botón se habilitará luego de ver el video."}
             </p>
           </div>
         </div>
         <div className="bg-[var(--primary)] size-[600px] md:size-[700px] blur-[100px] md:blur-[200px] opacity-[50%] rounded-full absolute left-[calc(50%-300px)] md:-left-[300px] -bottom-[300px] md:block hidden -z-50"></div>
         <div className="bg-[var(--primary)] size-[600px] md:size-[700px] blur-[100px] md:blur-[200px] opacity-[50%] rounded-full absolute right-[calc(50%-300px)] md:-right-[300px] -bottom-[300px] md:block hidden -z-50"></div>
-      </section>
+      </section> */}
 
       <p className="pb-6 pt-8 text-[14px] text-center px-4 text-white/60">
         © {coachFullName} 2025. Todos los derechos reservados.
+      </p>
+      <p className="text-[12px] px-4 text-center text-white/70 pb-4">
+        Esta página no está afiliada ni propiedad de Facebook™, Instagram™ o Meta™.
+        Los resultados presentados son ejemplos reales y pueden variar según cada persona.
       </p>
     </div>
   );
