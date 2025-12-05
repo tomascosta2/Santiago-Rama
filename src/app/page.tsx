@@ -9,6 +9,7 @@ import {
   srcVsl,
   TESTIMONIALS,
   TESTIMONIALS_VIDEO_PAGE,
+  VIDEO_TESTIMONIALS,
 } from "./utils/constantes";
 
 export default function Home() {
@@ -20,7 +21,7 @@ export default function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsUnlocked(true);
-    }, 5 * 60 * 1000); // 5 minutos
+    }, .1 * 60 * 1000); // 5 minutos
 
     return () => clearTimeout(timer);
   }, []);
@@ -118,7 +119,7 @@ export default function Home() {
                 MATEO LO LOGRO ¿QUE ESTAS ESPERANDO?
               </h2>
               <div className="mt-8 max-w-[900px] mx-auto space-y-6">
-                {TESTIMONIALS_VIDEO_PAGE.map((testimonial) => {
+                {VIDEO_TESTIMONIALS.map((testimonial) => {
                   return (
                     <div
                       key={testimonial.video}
