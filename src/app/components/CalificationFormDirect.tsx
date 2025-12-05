@@ -318,8 +318,9 @@ export default function CalificationFormDirect({ variant }: Props) {
       const isQualified =
         (data.presupuesto === 'presupuesto-intermedio' || data.presupuesto === 'presupuesto-alto') &&
         (data.edad === 'adulto' || data.edad === 'mayor') &&
-        (data.urgencia === '7' || data.urgencia === '10') &&
-        (data.ocupacion === 'negocio-propio' || data.ocupacion === 'profesional' );
+        (data.urgencia === '5' || data.urgencia === '7' || data.urgencia === '10') &&
+        (data.ocupacion === 'negocio-propio' || data.ocupacion === 'profesional' || data.ocupacion === 'freelance' );
+
 
       localStorage.setItem('isQualified', isQualified ? 'true' : 'false');
       localStorage.setItem('name', data.name);
@@ -343,7 +344,7 @@ export default function CalificationFormDirect({ variant }: Props) {
       const fbc = getCookieValue('_fbc');
 
       if (isQualified) {
-        await fetch('/api/track/lead', {
+        const leadEvent = await fetch('/api/track/lead', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -354,13 +355,17 @@ export default function CalificationFormDirect({ variant }: Props) {
             eventId: `lead-${Date.now()}`,
           }),
         });
+        console.log(leadEvent)
       }
 
-      if (data.presupuesto === 'presupuesto-intermedio' || data.presupuesto === 'presupuesto-alto') {
-        window.location.href = '/pages/calendly';
-      } else {
-        window.location.href = '/pages/nothing-for-you-now';
-      }
+      setTimeout(() => {
+        if (data.presupuesto === 'presupuesto-intermedio' || data.presupuesto === 'presupuesto-alto') {
+          window.location.href = '/pages/calendly';
+        } else {
+          window.location.href = '/pages/nothing-for-you-now';
+        }
+      }, 400)
+
     } catch (e) {
       console.error(e);
       setLoading(false);

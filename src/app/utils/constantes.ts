@@ -2,7 +2,7 @@ export const coachName = "Santiago"
 
 export const coachFullName = "Santiago Rama"
 
-export const pixelId = ""
+export const pixelId = "877786941359778"
 
 export const calendlyBaseUrl = "https://calendly.com/santiagoscf/calendario-sesion-gratuita-consultoria"
 
