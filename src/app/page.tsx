@@ -52,13 +52,13 @@ export default function Home() {
           <h1 className="text-center text-[20px] md:text-[32px] font-bold leading-[120%]">
             {variant === 'A' && (
               <span>
-                Bajá entre <span className="bg-[var(--primary)] text-[var(--text-primary)]">8 y 20 kg de grasa corporal y tonificá en 90 días</span> con mi <span className="bg-[var(--primary)] text-[var(--text-primary)]">protocolo para hompres ocupados</span> - sin dietas extremas ni rutinas imposibles
+                Bajá entre <span className="bg-[var(--primary)] text-[var(--text-primary)]">8 y 20 kg de grasa corporal y tonificá</span> en 90 días con mi <span className="bg-[var(--primary)] text-[var(--text-primary)]">protocolo para hompres ocupados</span> - sin dietas extremas ni rutinas imposibles
               </span>
             )}
 
             {variant === 'B' && (
               <span>
-                <span className="bg-[var(--primary)] text-[var(--text-primary)]">Perdé la panza, gana energía y tonificá en 90 días</span> con mi protocolo <span className="bg-[var(--primary)] text-[var(--text-primary)]">para hombres ocupados</span> - sin dietas extremas ni rutinas imposibles
+                <span className="bg-[var(--primary)] text-[var(--text-primary)]">Perdé la panza, gana energía y mejora tu salud en 90 días</span> con mi protocolo <span className="bg-[var(--primary)] text-[var(--text-primary)]">para hombres ocupados</span> - sin dietas extremas ni rutinas imposibles
               </span>
             )}
           </h1>
