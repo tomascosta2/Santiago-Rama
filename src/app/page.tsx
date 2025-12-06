@@ -21,7 +21,7 @@ export default function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsUnlocked(true);
-    }, 5 * 60 * 1000); // 5 minutos
+    }, 0 * 60 * 1000); // 5 minutos
 
     return () => clearTimeout(timer);
   }, []);
@@ -58,7 +58,7 @@ export default function Home() {
 
             {variant === 'B' && (
               <span>
-                <span className="bg-[var(--primary)] text-[var(--text-primary)]">Perde la panza, gana energía y tonificá en 90 días</span> con mi protocolo <span className="bg-[var(--primary)] text-[var(--text-primary)]">para hombres ocupados</span> - sin dietas extremas ni rutinas imposibles
+                <span className="bg-[var(--primary)] text-[var(--text-primary)]">Perdé la panza, gana energía y tonificá en 90 días</span> con mi protocolo <span className="bg-[var(--primary)] text-[var(--text-primary)]">para hombres ocupados</span> - sin dietas extremas ni rutinas imposibles
               </span>
             )}
           </h1>
@@ -78,7 +78,7 @@ export default function Home() {
             </div>
           </section>
           <p className="mt-4 text-center text-[16px] max-w-[700px] mx-auto">          
-            <strong>PASO 2 de 2:</strong> Agenda una Llamada si te gustaria Trabajar con Nosotros.
+            <strong>PASO 2 de 2:</strong> Agenda una Llamada si te gustaría Trabajar conmigo 1 a 1.
           </p>
 
           {/* Botón bloqueado 5 minutos */}
@@ -120,6 +120,7 @@ export default function Home() {
                     >
                       <div className="bg-[var(--primary)] size-[600px] md:size-[700px] top-0 md:-top-[100px] blur-[100px] opacity-[70%] rounded-full absolute left-[calc(50%-300px)] md:left-[calc(50%-350px)] -z-50"></div>
                       <div className="relative bg-[var(--background)] z-50 p-8 md:p-[50px] rounded-[20px] flex md:flex-row flex-col gap-4 md:gap-8">
+                        <p className="bg-[var(--primary)] py-1 px-4 mx-auto text-[18px] rounded-lg w-fit text-white font-semibold">{testimonial.cambio}</p>
                         <div className="w-full md:min-w-[360px] aspect-video rounded-[10px] overflow-hidden">
                           <iframe
                             className="w-full h-full"

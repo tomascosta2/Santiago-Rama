@@ -28,6 +28,7 @@ export const sendForm = "https://n8n.srv953925.hstgr.cloud/webhook/19ffc8bc-f934
 
 export const VIDEO_TESTIMONIALS = [
     {
+        cambio: "108 a 88 kg en 6 meses (-20 kg)",
         video: "https://player-vz-5c2adb98-6a4.tv.pandavideo.com/embed/?v=a0506554-1f1d-4678-8ffb-eb6afc047bce",
         titulo: "Los resultados de Marc están a la vista",
         story: "Hay mucha gente que que me ha notado el cambio y me lo han dicho.",
@@ -35,6 +36,7 @@ export const VIDEO_TESTIMONIALS = [
         dato: "Cataluña, España",
     },
     {
+        cambio: "98 a 86 kg 3 meses (-12 kg)",
         video: "https://player-vz-5c2adb98-6a4.tv.pandavideo.com/embed/?v=a8a76d1e-173c-478a-8daa-aa1ff9e7768a",
         titulo: "Hernan volvió a confiar en sí mismo",
         story: "Sentirse bien animicamente... emocionalmente te ayuda mucho.",
@@ -42,6 +44,7 @@ export const VIDEO_TESTIMONIALS = [
         dato: "EEUU",
     },
     {
+        cambio: "102 a 90 kg en 4 meses (-12 kg)",
         video: "https://player-vz-5c2adb98-6a4.tv.pandavideo.com/embed/?v=74190c9d-d6e3-47b1-bbb8-4138f8646eac",
         titulo: "Mario logró resultados sostenibles",
         story: "El dinero mejor invertido que que he tenido en mucho tiempo.",
@@ -49,6 +52,7 @@ export const VIDEO_TESTIMONIALS = [
         dato: "Panamá",
     },
     {
+        cambio: "96 a 86 kg en 5 meses (-10 kg)",
         video: "https://player-vz-5c2adb98-6a4.tv.pandavideo.com/embed/?v=b6ca9cd8-e908-4018-80a9-d7d2e01f23c7",
         titulo: "Diego consiguió resultados que realmente se sienten",
         story: "Hoy no estoy haciendo un esfuerzo para no subir.",
@@ -56,6 +60,7 @@ export const VIDEO_TESTIMONIALS = [
         dato: "Cordoba, Argentina",
     },
     {
+        cambio: "89 a 83 kg en 3 meses (-16 kg)",
         video: "https://player-vz-5c2adb98-6a4.tv.pandavideo.com/embed/?v=be556864-7e64-4b15-9ab7-75c1fd1c9689",
         titulo: "Héctor transformó su rutina con ajustes imperceptibles",
         story: "Sigo comiendo lo mismo que sigo comiendo en la regaladora, digo, ¡tán fácil!... Cambié lo imperceptible.",

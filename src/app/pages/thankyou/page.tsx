@@ -185,6 +185,7 @@ export default function ThankYou() {
                   >
                     <div className="bg-[var(--primary)] size-[600px] md:size-[700px] top-0 md:-top-[100px] blur-[100px] opacity-[70%] rounded-full absolute left-[calc(50%-300px)] md:left-[calc(50%-350px)] -z-50"></div>
                     <div className="relative bg-[var(--background)] z-50 p-8 md:p-[50px] rounded-[20px] flex md:flex-row flex-col gap-4 md:gap-8">
+                        <p className="bg-[var(--primary)] py-1 px-4 mx-auto text-[18px] rounded-lg w-fit text-white font-semibold">{testimonial.cambio}</p>
                       <div className="w-full md:min-w-[360px] aspect-video rounded-[10px] overflow-hidden">
                         <iframe
                           className="w-full h-full"
