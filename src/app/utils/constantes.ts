@@ -6,12 +6,12 @@ export const pixelId = "877786941359778"
 
 export const calendlyBaseUrl = "https://calendly.com/santiagoscf/calendario-sesion-gratuita-consultoria"
 
-export const waNumber = "2613830592";
+export const waNumber = "+5491180301000";
 
 export const ALT_IMG_GENERIC = "Santiago Rama - FIT"
 
 // Calendario: helpers
-export const titleCalender = "Reunión con el equipo de Manu – Plan para recomponer hormonas y músculo";
+export const titleCalender = "Plan para recomponer hormonas y músculo";
 export const descriptionCalender = `Reunión 1:1 para alinear objetivos y plan.\nEnlace: MEETING_URL\nTraer dudas y objetivos claros.`;
 export const locationCalender = "Online (se compartirá enlace)";
 
@@ -113,7 +113,7 @@ export const TESTIMONIALS_VIDEO_PAGE = [
 
 
 export const CALENDLY_TITLE_PART1 =
-    "Nuestros clientes bajan entre 8 y 20 kg de grasa corporal en 3 meses.";
+    "Nuestros clientes bajan entre 8 y 20 kg de grasa corporal en 3 a 6 meses.";
 
 export const CALENDLY_SPAN = "Vos también podés";
 

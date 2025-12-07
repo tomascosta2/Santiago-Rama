@@ -202,7 +202,7 @@ export default function CalificationFormDirect({ variant }: Props) {
           {
             value: 'presupuesto-intermedio',
             label:
-              'Quiero un plan serio, con un equipo de profesionales ayudándome 1 a 1 y que sea algo 100% personalizado para asegurar mi cambio en los 3 meses de trabajo.',
+              'Quiero un plan serio, con un con estructura y soporte 1-1 y que sea algo 100% personalizado para asegurar mi cambio en los 3 o 6 meses de trabajo.',
           },
           {
             value: 'presupuesto-alto',
@@ -544,7 +544,7 @@ export default function CalificationFormDirect({ variant }: Props) {
 
           <p className="text-white/70 text-xs mt-4">
             PD: El programa está diseñado para hombres ocupados; no es la típica rutina de
-            influencer que solo puede cumplir un adolescente que vive con los padres, ni las dietas de moda que son insostenibles.
+            influencer que solo puede cumplir un que solo puede cumplir alguien joven con mucho tiempo libre, ni las dietas de moda que son insostenibles.
           </p>
         </form>
       </div>

@@ -165,7 +165,7 @@ export default function ThankYou() {
               No tengo tiempo todos los días, ¿igual puedo?
             </AccordionTrigger>
             <AccordionContent className="text-[16px]">
-              Sí. Planes efectivos de 3 sesiones siples/semana, 100% adaptados a tu agenda.
+              Sí. Planes efectivos de 3 sesiones simples por semana, 100% adaptados a tu agenda.
             </AccordionContent>
           </AccordionItem>
         </Accordion>

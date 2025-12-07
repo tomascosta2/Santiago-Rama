@@ -120,8 +120,8 @@ export default function CalendlyFast() {
                 </li>
               </ul>
               <p className="text-[15px] sm:text-[18px] text-white">
-                Te <strong>garantizamos</strong> que te vas con ideas claras de
-                cómo bajar de peso de un experto certificado.
+                Te <strong>garanticertificadozamos</strong> que te vas con ideas claras de
+                cómo bajar de peso de un experto en perdida de peso sostenible.
               </p>
               {/* <div className="mt-8 hidden md:block">
                 <img
