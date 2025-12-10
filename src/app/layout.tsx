@@ -44,7 +44,7 @@ export default function RootLayout({
         </noscript>
 
         <Script id="hotjar" strategy="afterInteractive">
-        {`
+          {`
           (function(h,o,t,j,a,r){
             h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
             h._hjSettings={hjid:6503658,hjsv:6};
@@ -54,12 +54,33 @@ export default function RootLayout({
             a.appendChild(r);
           })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
         `}
-      </Script>
+        </Script>
 
-      <link rel="preconnect" href="https://assets.calendly.com" crossOrigin="" />
-      <link rel="preconnect" href="https://calendly.com" crossOrigin="" />
-      <link rel="dns-prefetch" href="https://assets.calendly.com" />
-      <link rel="dns-prefetch" href="https://calendly.com" />
+        {/* X conversion tracking base code */}
+        <Script id="x-conversion-tracking" strategy="afterInteractive">
+          {`
+            !function(e,t,n,s,u,a){
+              e.twq||(s=e.twq=function(){
+                s.exe ? s.exe.apply(s,arguments) : s.queue.push(arguments);
+              },
+              s.version='1.1',
+              s.queue=[],
+              u=t.createElement(n),
+              u.async=!0,
+              u.src='https://static.ads-twitter.com/uwt.js',
+              a=t.getElementsByTagName(n)[0],
+              a.parentNode.insertBefore(u,a))
+            }(window,document,'script');
+
+            twq('config','pffjj');
+          `}
+        </Script>
+        {/* End X conversion tracking base code */}
+
+        <link rel="preconnect" href="https://assets.calendly.com" crossOrigin="" />
+        <link rel="preconnect" href="https://calendly.com" crossOrigin="" />
+        <link rel="dns-prefetch" href="https://assets.calendly.com" />
+        <link rel="dns-prefetch" href="https://calendly.com" />
 
       </head>
       <body>
