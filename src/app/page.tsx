@@ -37,7 +37,7 @@ export default function Home() {
       {isFormOpened && <CalificationFormDirect variant={variant} />}
       <header className="bg-[var(--primary)] max-w-[85%] w-[400px] rounded-full mt-8 md:mt-12 mx-auto">
         <div className="cf-container">
-          <h3 className="text-center text-[var(--text-primary)] text-[14px] py-3 font-bold leading-[115%]">            
+          <h3 className="text-center text-[var(--text-primary)] text-[14px] py-3 font-bold leading-[115%]">
             <span>
               Te exigis, te castigas, lo das todo… y aún así ¿no te reconoces
               frente al espejo?
@@ -77,7 +77,7 @@ export default function Home() {
               </div>
             </div>
           </section>
-          <p className="mt-4 text-center text-[16px] max-w-[700px] mx-auto">          
+          <p className="mt-4 text-center text-[16px] max-w-[700px] mx-auto">
             <strong>PASO 2 de 2:</strong> Agendá una Llamada para Asegurar tu Lugar y tu Cambio Fisico.
           </p>
 
@@ -119,30 +119,32 @@ export default function Home() {
                       className="p-2 rounded-[24px] relative overflow-clip"
                     >
                       <div className="bg-[var(--primary)] size-[600px] md:size-[700px] top-0 md:-top-[100px] blur-[100px] opacity-[70%] rounded-full absolute left-[calc(50%-300px)] md:left-[calc(50%-350px)] -z-50"></div>
-                      <div className="relative bg-[var(--background)] z-50 p-8 md:p-[50px] rounded-[20px] flex md:flex-row flex-col gap-4 md:gap-8">
-                        <p className="bg-[var(--primary)] py-1 px-4 mx-auto text-[18px] rounded-lg w-fit text-white font-semibold">{testimonial.cambio}</p>
-                        <div className="w-full md:min-w-[360px] aspect-video rounded-[10px] overflow-hidden">
-                          <iframe
-                            className="w-full h-full"
-                            src={testimonial.video}
-                            title={testimonial.titulo}
-                            allow="autoplay; fullscreen"
-                          ></iframe>
-                        </div>
-                        <div className="py-4 flex flex-col justify-between">
-                          <div>
-                            <h3 className="text-[24px] leading-[120%] font-bold">
-                              {testimonial.titulo}
-                            </h3>
-                            <p className="text-white/80 mt-4">
-                              {testimonial.story}
-                            </p>
+                      <div className="relative bg-[var(--background)] z-50 p-8 md:p-[50px] rounded-[20px]">
+                        <p className="bg-[var(--primary)] py-1 px-4 mx-auto text-[14px] rounded-lg w-fit text-white font-semibold">{testimonial.cambio}</p>
+                        <div className="flex md:flex-row flex-col gap-4 md:gap-8 mt-4">
+                          <div className="w-full md:min-w-[360px] aspect-video rounded-[10px] overflow-hidden">
+                            <iframe
+                              className="w-full h-full"
+                              src={testimonial.video}
+                              title={testimonial.titulo}
+                              allow="autoplay; fullscreen"
+                            ></iframe>
                           </div>
-                          <div className="mt-4">
-                            <p>{testimonial.nombre}</p>
-                            <p className="text-white/80 mt-2 text-[14px]">
-                              {testimonial.dato}
-                            </p>
+                          <div className="py-4 flex flex-col justify-between">
+                            <div>
+                              <h3 className="text-[24px] leading-[120%] font-bold">
+                                {testimonial.titulo}
+                              </h3>
+                              <p className="text-white/80 mt-4">
+                                {testimonial.story}
+                              </p>
+                            </div>
+                            <div className="mt-4">
+                              <p>{testimonial.nombre}</p>
+                              <p className="text-white/80 mt-2 text-[14px]">
+                                {testimonial.dato}
+                              </p>
+                            </div>
                           </div>
                         </div>
                       </div>
