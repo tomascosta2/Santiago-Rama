@@ -544,7 +544,7 @@ export default function CalificationFormDirect({ variant }: Props) {
 
           <p className="text-white/70 text-xs mt-4">
             PD: El programa está diseñado para hombres ocupados; no es la típica rutina de
-            influencer que solo puede cumplir un que solo puede cumplir alguien joven con mucho tiempo libre, ni las dietas de moda que son insostenibles.
+            influencer que solo puede cumplir alguien joven con mucho tiempo libre, ni las dietas de moda que son insostenibles.
           </p>
         </form>
       </div>
