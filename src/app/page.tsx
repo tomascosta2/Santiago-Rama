@@ -56,9 +56,9 @@ export default function Home() {
               </span>
             )}
 
-            {variant === 'B' && (
+            {variant === 'A' && (
               <span>
-                <span className="">Perdé la panza, gana energía y mejora tu salud en 90 días</span> con mi protocolo <span className="">para hombres ocupados</span> - sin dietas extremas ni rutinas imposibles
+                Bajá entre <span className="">8 y 20 kg de grasa corporal, recupera tu energía y tonificá</span> en 90 días con mi <span className="">protocolo para hompres ocupados</span> - sin dietas extremas ni rutinas imposibles
               </span>
             )}
           </h1>
