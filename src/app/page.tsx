@@ -56,7 +56,7 @@ export default function Home() {
               </span>
             )}
 
-            {variant === 'A' && (
+            {variant === 'B' && (
               <span>
                 Bajá entre <span className="">8 y 20 kg de grasa corporal, recupera tu energía y tonificá</span> en 90 días con mi <span className="">protocolo para hompres ocupados</span> - sin dietas extremas ni rutinas imposibles
               </span>
