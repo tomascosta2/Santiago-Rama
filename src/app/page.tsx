@@ -39,8 +39,7 @@ export default function Home() {
         <div className="cf-container">
           <h3 className="text-center text-[var(--text-primary)] text-[14px] py-3 font-bold leading-[115%]">
             <span>
-              Te exigis, te castigas, lo das todo… y aún así ¿no te reconoces
-              frente al espejo?
+              Exclusivo para Profesionales +35
             </span>
           </h3>
         </div>
@@ -50,17 +49,9 @@ export default function Home() {
       <section className="mt-6 md:mt-8 pb-[60px] md:pb-[80px]">
         <div className="cf-container">
           <h1 className="text-center text-[20px] md:text-[32px] font-bold leading-[120%]">
-            {variant === 'A' && (
-              <span>
-                Bajá entre <span className="">8 y 20 kg de grasa corporal y tonificá</span> en 90 días con mi <span className="">protocolo para hompres ocupados</span> - sin dietas extremas ni rutinas imposibles
-              </span>
-            )}
-
-            {variant === 'B' && (
               <span>
                 Bajá entre <span className="">8 y 20 kg de grasa corporal, recupera tu energía y tonificá</span> en 90 días con mi <span className="">protocolo para hompres ocupados</span> - sin dietas extremas ni rutinas imposibles
               </span>
-            )}
           </h1>
           <section className="relative">
             <div className="bg-[var(--primary)] border-4 overflow-clip rounded-[12px] md:rounded-[16px] border-[var(--primary)] mt-6 max-w-[750px] mx-auto">
