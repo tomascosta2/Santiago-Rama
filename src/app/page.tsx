@@ -80,7 +80,7 @@ export default function Home() {
               con mi Método [M] de forma 100% natural
             </span>
           </h1>
-          <p className="text-[var(--primary)] text-center mt-2">
+          <p className="text-white/80 text-center mt-2">
             (Sin Dietas Extremas Ni Rutinas Agobiantes)
           </p>
           <section className="relative">
