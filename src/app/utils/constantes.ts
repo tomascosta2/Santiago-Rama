@@ -101,15 +101,6 @@ export const TESTIMONIALS_THANKYOU_IMG = [
 // El testimonio que se habilita despues de ver el vsl principal de page
 export const TESTIMONIALS_VIDEO_PAGE = [
     {
-        video:
-            "https://player-vz-5c2adb98-6a4.tv.pandavideo.com/embed/?v=a0506554-1f1d-4678-8ffb-eb6afc047bce",
-        titulo: "Mateo bajo 17 KG en SOLO 3 meses",
-        story:
-            "Antes me miraba de reojo y me veía espantoso... Son 90 días que me cambiaron la vida. Es un cambio gigante no solo para mi cuerpo, sino también para mi mentalidad.",
-        nombre: "Mateo Falco",
-        dato: "Buenos Aires, Argentina",
-    },
-        {
         video: "https://player-vz-5c2adb98-6a4.tv.pandavideo.com/embed/?v=a0506554-1f1d-4678-8ffb-eb6afc047bce",
         titulo: "Los resultados de Marc están a la vista",
         story: "Hay mucha gente que que me ha notado el cambio y me lo han dicho.",
@@ -178,19 +169,19 @@ export const METHOD_INCLUDES = [
     {
         img: "./images/stethoscope.svg",
         title: `Diagnóstico y Monitoreo Hormonal`
-    }, 
+    },
     {
         img: "./images/classroom.svg",
         title: `Clases de Motivación y Liderazgo`
-    }, 
+    },
     {
         img: "./images/test_passed.svg",
         title: `Tacker de Hábitos`
-    }, 
+    },
     {
         img: "./images/batch_assign.svg",
         title: `Comunidad Exclusiva`
-    }, 
+    },
     {
         img: "./images/today.svg",
         title: `Seguimiento y Acompañamiento Diario`

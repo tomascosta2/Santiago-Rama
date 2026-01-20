@@ -77,7 +77,7 @@ export default function Home() {
               <span>
                 6 y 15 kg de grasa, recupera tu energía y tonificá en 90 días
               </span>{" "}
-              con mi Método [M] de forma 100% natural
+              con mi Método Sostenible de forma 100% natural
             </span>
           </h1>
           <p className="text-white/80 text-center mt-2">
