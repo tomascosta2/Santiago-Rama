@@ -235,8 +235,8 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
         options: [
           { value: 'presupuesto-bajo', label: 'Menos de 200 USD (En este caso no vas a poder agendar)' },
           { value: 'presupuesto-intermedio', label: 'Entre 200 y 400 USD' },
-          { value: 'presupuesto-alto', label: 'Entre 400 y 600 USD' },
-          { value: 'presupuesto-muy-alto', label: '+600 USD' },
+          { value: 'presupuesto-alto', label: 'Entre 400 y 800 USD' },
+          { value: 'presupuesto-muy-alto', label: '+800 USD' },
         ],
       },
     ],
