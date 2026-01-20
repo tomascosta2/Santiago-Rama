@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
-import { descriptionCalender, titleCalender, waNumber, locationCalender, idVsl, idThankyou, srcThankyou, coachName, TESTIMONIALS_THANKYOU_IMG } from "@/app/utils/constantes";
+import { descriptionCalender, titleCalender, VIDEO_TESTIMONIALS, waNumber, locationCalender, idVsl, idThankyou, srcThankyou, TESTIMONIALS_THANKYOU_IMG, coachName } from "@/app/utils/constantes";
 
 export default function ThankYou() {
   // Opcional: recuperar datos del paso anterior
@@ -22,7 +22,7 @@ export default function ThankYou() {
         ""; // ISO date string
       setName(n ?? "");
       setStartAt(s ?? "");
-    } catch {}
+    } catch { }
   }, []);
 
   // Countdown
@@ -71,62 +71,16 @@ export default function ThankYou() {
     return `https://outlook.live.com/calendar/0/deeplink/compose?${qs.toString()}`;
   }, [startAt]);
 
-  const appleIcsData = useMemo(() => {
-    if (!startAt) return "#";
-    const start = new Date(startAt);
-    const end = new Date(start.getTime() + 30 * 60 * 1000);
-    const ics = [
-      "BEGIN:VCALENDAR",
-      "VERSION:2.0",
-      "PRODID:-//Nano//Attendance//ES",
-      "BEGIN:VEVENT",
-      `UID:${crypto.randomUUID()}`,
-      `DTSTAMP:${new Date().toISOString().replace(/[-:]|\.\d{3}/g, "")}`,
-      `DTSTART:${start.toISOString().replace(/[-:]|\.\d{3}/g, "")}`,
-      `DTEND:${end.toISOString().replace(/[-:]|\.\d{3}/g, "")}`,
-      `SUMMARY:${titleCalender}`,
-      `DESCRIPTION:${descriptionCalender.replace(/\n/g, "\\n")}`,
-      `LOCATION:${location}`,
-      "END:VEVENT",
-      "END:VCALENDAR"
-    ].join("\r\n");
-    return `data:text/calendar;charset=utf-8,${encodeURIComponent(ics)}`;
-  }, [startAt]);
 
   // WhatsApp confirm
 
   const confirmMsg = encodeURIComponent(
-    `Hola Manu ${name ? `, soy ${name}` : ""}. Confirmo mi asistencia a la reunión ${startAt ? `del ${new Date(startAt).toLocaleString()}` : ""}.`
+    `Hola ${coachName} ${name ? `, soy ${name}` : ""}. Confirmo mi asistencia a la reunión ${startAt ? `del ${new Date(startAt).toLocaleString()}` : ""}.`
   );
   const waConfirmHref = `https://wa.me/${waNumber}?text=${confirmMsg}`;
 
-  // Pixel (opcional): enviar evento custom al hacer click en Confirmar
-  const trackConfirm = () => {
-    try {
-      // @ts-ignore
-      window.fbq?.("trackCustom", "ConfirmedAttendance", {
-        startAt,
-        name
-      });
-    } catch {}
-  };
-
   const confirmEnabled = agreeQuietPlace && agreeOnTime && agreeNoReschedule;
 
-  // vCard (agregar contacto de Nano)
-  const vcardData = useMemo(() => {
-    const v = [
-      "BEGIN:VCARD",
-      "VERSION:3.0",
-      "N:Nunez;Manu;;;",
-      `FN:${coachName}`,
-      `ORG:${coachName}`,
-      "TITLE:Coach",
-      `TEL;TYPE=CELL:+${waNumber}`,
-      "END:VCARD"
-    ].join("\n");
-    return `data:text/vcard;charset=utf-8,${encodeURIComponent(v)}`;
-  }, []);
 
   return (
     <div className="bg-white">
@@ -137,10 +91,10 @@ export default function ThankYou() {
           <span><strong>¡Último paso!</strong> Confirmá y agendá para no perder tu cupo.</span>
         </p>
 
-        <iframe className="w-full aspect-video my-4" 
-        id={`${idThankyou}`}
-        src={`${srcThankyou}`}
-        allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"></iframe>
+        <iframe className="w-full aspect-video my-4"
+          id={`${idThankyou}`}
+          src={`${srcThankyou}`}
+          allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"></iframe>
 
         {/* Título + countdown */}
         <h1 className="text-[26px] text-black font-bold leading-[115%] mb-2">
@@ -175,11 +129,9 @@ export default function ThankYou() {
 
         {/* CTA principal */}
         <a
-          className={`py-3 block text-center mx-auto md:w-fit px-8 font-bold rounded-lg transition ${
-            confirmEnabled ? "bg-green-600 text-white hover:opacity-90" : "bg-gray-300 text-gray-600 cursor-not-allowed"
-          }`}
+          className={`py-3 block text-center mx-auto md:w-fit px-8 font-bold rounded-lg transition ${confirmEnabled ? "bg-green-600 text-white hover:opacity-90" : "bg-gray-300 text-gray-600 cursor-not-allowed"
+            }`}
           target="_blank"
-          onClick={confirmEnabled ? trackConfirm : undefined}
           href={confirmEnabled ? waConfirmHref : undefined}
           aria-disabled={!confirmEnabled}
         >
@@ -213,20 +165,67 @@ export default function ThankYou() {
               No tengo tiempo todos los días, ¿igual puedo?
             </AccordionTrigger>
             <AccordionContent className="text-[16px]">
-              Sí. Planes efectivos de 3 sesiones siples/semana, 100% adaptados a tu agenda.
+              Sí. Planes efectivos de 3 sesiones simples por semana, 100% adaptados a tu agenda.
             </AccordionContent>
           </AccordionItem>
         </Accordion>
 
+        <section className="py-[40px] relative z-20">
+          <div className="cf-container">
+            <h2 className="text-[28px] font-bold text-[#111] text-center uppercase max-w-[500px] leading-[120%] mx-auto">
+              TODOS ELLOS PASARON POR ACÁ, MIRA LO QUE PIENSAN...
+            </h2>
+            <p className="text-center text-[#111]/80 mt-4">* Algunos estan difuminados por petición y privacidad del cliente</p>
+            <div className="mt-8 max-w-[900px] mx-auto space-y-6">
+              {VIDEO_TESTIMONIALS.map((testimonial) => {
+                return (
+                  <div
+                    key={testimonial.video}
+                    className="p-2 rounded-[24px] relative overflow-clip"
+                  >
+                    <div className="bg-[var(--primary)] size-[600px] md:size-[700px] top-0 md:-top-[100px] blur-[100px] opacity-[70%] rounded-full absolute left-[calc(50%-300px)] md:left-[calc(50%-350px)] -z-50"></div>
+                    <div className="relative bg-[var(--background)] z-50 p-8 md:p-[50px] rounded-[20px] flex md:flex-col flex-col gap-4 md:gap-8">
+                        <p className="bg-[var(--primary)] py-1 px-4 mx-auto text-[18px] rounded-lg w-fit text-white font-semibold">{testimonial.cambio}</p>
+                      <div className="w-full md:min-w-[360px] aspect-video rounded-[10px] overflow-hidden">
+                        <iframe
+                          className="w-full h-full"
+                          src={testimonial.video}
+                          title={testimonial.titulo}
+                          allow="autoplay; fullscreen"
+                        ></iframe>
+                      </div>
+                      <div className="py-4 flex flex-col justify-between">
+                        <div>
+                          <h3 className="text-[24px] leading-[120%] font-bold">
+                            {testimonial.titulo}
+                          </h3>
+                          <p className="text-white/80 mt-4">
+                            {testimonial.story}
+                          </p>
+                        </div>
+                        <div className="mt-4">
+                          <p>{testimonial.nombre}</p>
+                          <p className="text-white/80 mt-2 text-[14px]">
+                            {testimonial.dato}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
         {/* Social proof compacto arriba del fold */}
-        <div className="grid md:grid-cols-3 gap-4 mt-8">
+        {/* <div className="grid md:grid-cols-3 gap-4 mt-8">
           {TESTIMONIALS_THANKYOU_IMG.map((t, i) => (
             <div key={i}>
               <p className="text-center py-2 bg-[var(--primary)] text-black font-semibold">{t.txt}</p>
               <img className="w-full h-[260px] object-cover" src={t.img} alt={`Cambio ${i+1}`} />
             </div>
           ))}
-        </div>
+        </div> */}
 
         {/* Checklist de compromiso */}
         <div className="rounded-xl border p-4 bg-white mt-8">
@@ -249,11 +248,9 @@ export default function ThankYou() {
 
         {/* CTA repetido al final */}
         <a
-          className={`py-3 block text-center mx-auto md:w-fit mt-4 px-8 font-bold rounded-lg transition ${
-            confirmEnabled ? "bg-green-600 text-white hover:opacity-90" : "bg-gray-300 text-gray-600 cursor-not-allowed"
-          }`}
+          className={`py-3 block text-center mx-auto md:w-fit mt-4 px-8 font-bold rounded-lg transition ${confirmEnabled ? "bg-green-600 text-white hover:opacity-90" : "bg-gray-300 text-gray-600 cursor-not-allowed"
+            }`}
           target="_blank"
-          onClick={confirmEnabled ? trackConfirm : undefined}
           href={confirmEnabled ? waConfirmHref : undefined}
           aria-disabled={!confirmEnabled}
         >

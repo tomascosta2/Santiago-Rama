@@ -35,7 +35,7 @@ export default function Home() {
   console.log(variant);
 
   return (
-    <div className="relative overflow-clip pt-8 md:pt-12">
+    <div className="relative overflow-clip pt-12">
       <img
         src="/images/Sombra.webp"
         alt="Sombra"
@@ -60,7 +60,7 @@ export default function Home() {
         className="h-[25px] object-contain mx-auto"
         alt="Logo"
       /> */}
-      <header className="bg-linear-0 from-[#0E0E0E] to-[#1C1B1B] max-w-[85%] mt-12 w-[500px] rounded-full mx-auto border border-[var(--primary)]/30 z-50">
+      <header className="bg-linear-0 from-[#0E0E0E] to-[#1C1B1B] max-w-[85%] w-[500px] rounded-full mx-auto border border-[var(--primary)]/30 z-50">
         <div className="cf-container">
           <h3 className="text-center uppercase text-[var(--text-primary)]/80 tracking-widest text-[12px] py-3 leading-[130%]">
             <span>Exclusivo para profesionales mayores de 35</span>
@@ -429,7 +429,7 @@ export default function Home() {
           </div>
         </section>
       </div> */}
-
+{/* 
       <section className="w-full  bg-[#000] relative pt-[80px] md:pt-[160px]">
         <div className="h-[2px] top-0 absolute overflow-clip w-full z-50 hidden md:block">
           <div className="size-[400px] blur-[200px] left-[calc(50%-200px)] -top-[200px] absolute bg-[var(--primary)]"></div>
@@ -522,8 +522,8 @@ export default function Home() {
             </div>
           </div>
         </div>
-        {/* </div> */}
-      </section>
+        {/* </div> 
+      </section> */}
       
       {/* Seccion Faqs
       <section className="pt-[120px] pb-[80px]">
@@ -571,8 +571,8 @@ export default function Home() {
       <p className="pb-6 pt-8 text-[14px] text-center px-4 text-white/60">
         © {coachName} 2025. Todos los derechos reservados.
       </p>
-      <div className="bg-[var(--primary)] size-[600px] md:size-[700px] blur-[100px] md:blur-[200px] opacity-[50%] rounded-full absolute left-[calc(50%-300px)] md:-left-[300px] -bottom-[300px] md:block hidden -z-50"></div>
-      <div className="bg-[var(--primary)] size-[600px] md:size-[700px] blur-[100px] md:blur-[200px] opacity-[50%] rounded-full absolute right-[calc(50%-300px)] md:-right-[300px] -bottom-[300px] md:block hidden -z-50"></div>
+      {/* <div className="bg-[var(--primary)] size-[600px] md:size-[700px] blur-[100px] md:blur-[200px] opacity-[50%] rounded-full absolute left-[calc(50%-300px)] md:-left-[300px] -bottom-[300px] md:block hidden -z-50"></div>
+      <div className="bg-[var(--primary)] size-[600px] md:size-[700px] blur-[100px] md:blur-[200px] opacity-[50%] rounded-full absolute right-[calc(50%-300px)] md:-right-[300px] -bottom-[300px] md:block hidden -z-50"></div> */}
     </div>
   );
 }

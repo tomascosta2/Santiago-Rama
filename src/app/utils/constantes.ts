@@ -60,11 +60,11 @@ export const VIDEO_TESTIMONIALS = [
         dato: "Cordoba, Argentina",
     },
     {
-        cambio: "89 a 83 kg en 3 meses (-16 kg)",
+        cambio: "89 a 83 kg en 3 meses (-6 kg)",
         video: "https://player-vz-5c2adb98-6a4.tv.pandavideo.com/embed/?v=be556864-7e64-4b15-9ab7-75c1fd1c9689",
         titulo: "Héctor transformó su rutina con ajustes imperceptibles",
         story: "Sigo comiendo lo mismo que sigo comiendo en la regaladora, digo, ¡tán fácil!... Cambié lo imperceptible.",
-        nombre: "Hector",
+        nombre: "Héctor",
         dato: "Monterrey, México",
     },
 ];
@@ -108,6 +108,41 @@ export const TESTIMONIALS_VIDEO_PAGE = [
             "Antes me miraba de reojo y me veía espantoso... Son 90 días que me cambiaron la vida. Es un cambio gigante no solo para mi cuerpo, sino también para mi mentalidad.",
         nombre: "Mateo Falco",
         dato: "Buenos Aires, Argentina",
+    },
+        {
+        video: "https://player-vz-5c2adb98-6a4.tv.pandavideo.com/embed/?v=a0506554-1f1d-4678-8ffb-eb6afc047bce",
+        titulo: "Los resultados de Marc están a la vista",
+        story: "Hay mucha gente que que me ha notado el cambio y me lo han dicho.",
+        nombre: "Marc",
+        dato: "Cataluña, España",
+    },
+    {
+        video: "https://player-vz-5c2adb98-6a4.tv.pandavideo.com/embed/?v=a8a76d1e-173c-478a-8daa-aa1ff9e7768a",
+        titulo: "Hernan volvió a confiar en sí mismo",
+        story: "Sentirse bien animicamente... emocionalmente te ayuda mucho.",
+        nombre: "Hernan",
+        dato: "EEUU",
+    },
+    {
+        video: "https://player-vz-5c2adb98-6a4.tv.pandavideo.com/embed/?v=74190c9d-d6e3-47b1-bbb8-4138f8646eac",
+        titulo: "Mario logró resultados sostenibles",
+        story: "El dinero mejor invertido que que he tenido en mucho tiempo.",
+        nombre: "Mario",
+        dato: "Panamá",
+    },
+    {
+        video: "https://player-vz-5c2adb98-6a4.tv.pandavideo.com/embed/?v=b6ca9cd8-e908-4018-80a9-d7d2e01f23c7",
+        titulo: "Diego consiguió resultados que realmente se sienten",
+        story: "Hoy no estoy haciendo un esfuerzo para no subir.",
+        nombre: "Diego",
+        dato: "Cordoba, Argentina",
+    },
+    {
+        video: "https://player-vz-5c2adb98-6a4.tv.pandavideo.com/embed/?v=be556864-7e64-4b15-9ab7-75c1fd1c9689",
+        titulo: "Héctor transformó su rutina con ajustes imperceptibles",
+        story: "Sigo comiendo lo mismo que sigo comiendo en la regaladora, digo, ¡tán fácil!... Cambié lo imperceptible.",
+        nombre: "Héctor",
+        dato: "Monterrey, México",
     },
 ];
 
@@ -162,3 +197,9 @@ export const METHOD_INCLUDES = [
     },
 
 ]
+
+export const FIRST_STEP_FORM = "https://n8n.srv953925.hstgr.cloud/webhook/f28c69e3-ffa5-4d61-9951-23494b5b5b8c";
+export const FIRST_STEP_FORM_TEST = "https://n8n.srv953925.hstgr.cloud/webhook-test/f28c69e3-ffa5-4d61-9951-23494b5b5b8c";
+export const COMPLETED_FORM = "https://n8n.srv953925.hstgr.cloud/webhook/5992fcc2-11ef-42e8-b026-94e11c5b6cbe";
+export const COMPLETED_FORM_TEST = "https://n8n.srv953925.hstgr.cloud/webhook-test//5992fcc2-11ef-42e8-b026-94e11c5b6cbe";
+export const CALL_SHEDULED = "https://n8n.srv953925.hstgr.cloud/webhook/c4fa347d-8a70-4aaa-ba25-e53c442a008e"

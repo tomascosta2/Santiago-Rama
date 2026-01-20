@@ -5,7 +5,7 @@ import {
   CALENDLY_TITLE_PART1,
   CALENDLY_TITLE_PART2,
   calendlyBaseUrl,
-  TESTIMONIALS,
+  CALL_SHEDULED,
   waNumber,
 } from "@/app/utils/constantes";
 import { useEffect, useMemo, useState } from "react";
@@ -29,9 +29,7 @@ export default function CalendlyFast() {
       if (e.origin !== "https://calendly.com") return;
 
       if (e.data?.event === "calendly.event_scheduled") {
-        // https://hook.us2.make.com/2a7gkby3xtgo4annvy16nbu74laekhem
-
-        fetch("https://hook.us2.make.com/2a7gkby3xtgo4annvy16nbu74laekhem", {
+        fetch(CALL_SHEDULED, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -124,7 +122,7 @@ export default function CalendlyFast() {
               </ul>
               <p className="text-[15px] sm:text-[18px] text-white">
                 Te <strong>garantizamos</strong> que te vas con ideas claras de
-                cómo bajar de peso de un experto certificado.
+                cómo bajar de peso de un experto en perdida de peso sostenible.
               </p>
               {/* <div className="mt-8 hidden md:block">
                 <img
@@ -166,7 +164,7 @@ export default function CalendlyFast() {
               WhatsApp al{" "}
               <a
                 className="underline text-blue-500"
-                href="https://wa.me/5492216720769"
+                href={`https://wa.me/${waNumber}`}
                 target="_blank"
               >
                 +{waNumber}
@@ -180,26 +178,6 @@ export default function CalendlyFast() {
                 alt={`${ALT_IMG_GENERIC}`}
               />
             </div> */}
-          </div>
-        </div>
-      </section>
-
-       {/* Social proof – sin cambios */}
-      <section className="py-[40px] px-4">
-        <div className="max-w-[1200px] mx-auto">
-          <div className="flex flex-wrap justify-center gap-4 mt-8">
-            {TESTIMONIALS.map((t, i) => (
-              <div className="rounded-[14px] w-full md:w-[32%] bg-[var(--primary)] p-1 overflow-hidden">
-                <p className="text-center py-2 bg-[var(--primary)] text-[#111] font-semibold">
-                  {t.weight}
-                </p>
-                <img
-                  className="w-full aspect-square rounded-[10px] md:h-[290px] max-h-full object-cover"
-                  src={`${t.img}`}
-                  alt={`${ALT_IMG_GENERIC} cambio ${i + 1}`}
-                />
-              </div>
-            ))}
           </div>
         </div>
       </section>

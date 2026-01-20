@@ -3,6 +3,7 @@
 import { hostname } from 'os';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { COMPLETED_FORM, COMPLETED_FORM_TEST, FIRST_STEP_FORM, FIRST_STEP_FORM_TEST } from '../utils/constantes';
 
 type Props = {
   variant: string;
@@ -326,8 +327,8 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
   const hostname = typeof window !== "undefined" ? window.location.hostname : "";
 
   const N8N_CONTACT_WEBHOOK = hostname.includes("localhost") ?
-					'https://n8n.srv953925.hstgr.cloud/webhook-test/b80b5966-0768-476a-a00f-215adf99e830' :
-					'https://n8n.srv953925.hstgr.cloud/webhook/b80b5966-0768-476a-a00f-215adf99e830';
+					FIRST_STEP_FORM_TEST :
+					FIRST_STEP_FORM;
 
   const sentContactRef = useRef(false);
 
@@ -386,7 +387,7 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
 
       // test
       try {
-        const result = await fetch('https://n8n.srv953925.hstgr.cloud/webhook-test/6f46fb81-91f5-4ffe-8b1c-783d8f3ea581', {
+        const result = await fetch(`${COMPLETED_FORM_TEST}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify([{ ...data, variant, leadId: leadIdRef.current }]),
@@ -395,7 +396,7 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
       } catch { }
 
       // production
-      await fetch('https://n8n.srv953925.hstgr.cloud/webhook/6f46fb81-91f5-4ffe-8b1c-783d8f3ea581', {
+      await fetch(`${COMPLETED_FORM}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify([{ ...data, variant, leadId: leadIdRef.current }]),
