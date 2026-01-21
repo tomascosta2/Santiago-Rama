@@ -234,7 +234,7 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
           'En caso de ser aceptado y sabiendo que es un servicio integral de 3 meses ¿Cuanto estas dispuesto a invertir en vos, tu salud y tu fisico y ser acompañado ayudandote a lograr tus objetivos de forma garantizada? *',
         options: [
           { value: 'presupuesto-bajo', label: 'Menos de 200 USD (En este caso no vas a poder agendar)' },
-          { value: 'presupuesto-intermedio', label: 'Entre 200 y 400 USD' },
+          { value: 'presupuesto-intermedio', label: 'Entre 200 y 400 USD, y puedo acceder a un plan de pagos para los siguientes meses.' },
           { value: 'presupuesto-alto', label: 'Entre 400 y 800 USD' },
           { value: 'presupuesto-muy-alto', label: '+800 USD' },
         ],
@@ -678,7 +678,7 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
           </div>
 
           <p className="text-white/70 text-xs mt-4">
-            PD: El método M90 está pensado para hombres ocupados que quieren resultados reales sin vivir en el gimnasio.
+            PD: Este programa esta pensado para padres ocupados, buscando resultados reales, mediante el cambio de hábitos, de forma sostenible. No es la tipica rutina o dieta extrema, que puede seguir alguien con mucho tiempo libre
           </p>
         </form>
       </div>
