@@ -34,6 +34,10 @@ export default function Home() {
   const variant = variantRef.current;
   console.log(variant);
 
+  const headlineText =  variant === "A"
+    ? "Bajá entre 6 y 15 kg de grasa, recupera tu energía y tonificá en 90 días con mi Método Sostenible de forma 100% natural"
+    : "Elimina la Grasa Abdominal Bajando entre 10 y 20 kg, Recupera tu energía y Vitalidad con mi Método Sostenible en 12 semanas";
+
   return (
     <div className="relative overflow-clip pt-12">
       <img
@@ -73,11 +77,7 @@ export default function Home() {
         <div className="cf-container">
           <h1 className="text-center text-[22px] md:text-[38px] font-bold uppercase leading-[140%] md:px-4">
             <span>
-              Bajá entre{" "}
-              <span>
-                6 y 15 kg de grasa, recupera tu energía y tonificá en 90 días
-              </span>{" "}
-              con mi Método Sostenible de forma 100% natural
+              {headlineText}
             </span>
           </h1>
           <p className="text-white/80 text-center mt-2">
