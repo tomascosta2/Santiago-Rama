@@ -34,7 +34,7 @@ export default function Home() {
   const variant = variantRef.current;
   console.log(variant);
 
-  const headlineText =  variant === "A"
+  const headlineText = variant === "A"
     ? "Bajá entre 6 y 15 kg de grasa, recupera tu energía y tonificá en 90 días con mi Método Sostenible de forma 100% natural"
     : "Elimina la Grasa Abdominal Bajando entre 10 y 20 kg, Recupera tu energía y Vitalidad con mi Método Sostenible en 12 semanas";
 
@@ -207,7 +207,7 @@ export default function Home() {
           </section>
         </>
       )}
-{/* 
+      {/* 
       Seccion [M] no es para cualquiera
       <section className="py-[60px] md:py-[90px] relative overflow-clip">
         <div className="absolute w-full h-full -z-40 top-0 left-0 bg-[url('/images/fondo-cuadritos.webp')] filter saturate-0 bg-black bg-no-repeat bg-top"></div>
@@ -330,7 +330,7 @@ export default function Home() {
           </div>
         </div>
       </section> */}
-{/* 
+      {/* 
       Seccion que inluye el metodo
       <div className="bg-black">
         <section
@@ -429,7 +429,7 @@ export default function Home() {
           </div>
         </section>
       </div> */}
-{/* 
+      {/* 
       <section className="w-full  bg-[#000] relative pt-[80px] md:pt-[160px]">
         <div className="h-[2px] top-0 absolute overflow-clip w-full z-50 hidden md:block">
           <div className="size-[400px] blur-[200px] left-[calc(50%-200px)] -top-[200px] absolute bg-[var(--primary)]"></div>
@@ -524,7 +524,7 @@ export default function Home() {
         </div>
         {/* </div> 
       </section> */}
-      
+
       {/* Seccion Faqs
       <section className="pt-[120px] pb-[80px]">
         <div className="cf-container">
@@ -570,6 +570,13 @@ export default function Home() {
 
       <p className="pb-6 pt-8 text-[14px] text-center px-4 text-white/60">
         © {coachName} 2025. Todos los derechos reservados.
+        <br />
+        <span className="mt-2 block max-w-[500px] mx-auto text-[12px] text-white/40">
+          Este sitio no forma parte ni está avalado por Meta™ (Facebook™ o Instagram™).
+          Facebook™ e Instagram™ son marcas registradas de Meta Platforms, Inc.
+
+          Al utilizar este sitio aceptás nuestra <a href="/pages/politicas-de-privacidad">Política de Privacidad</a> y <a href="/pages/terminos-y-condiciones">Términos y Condiciones</a>.
+        </span>
       </p>
       {/* <div className="bg-[var(--primary)] size-[600px] md:size-[700px] blur-[100px] md:blur-[200px] opacity-[50%] rounded-full absolute left-[calc(50%-300px)] md:-left-[300px] -bottom-[300px] md:block hidden -z-50"></div>
       <div className="bg-[var(--primary)] size-[600px] md:size-[700px] blur-[100px] md:blur-[200px] opacity-[50%] rounded-full absolute right-[calc(50%-300px)] md:-right-[300px] -bottom-[300px] md:block hidden -z-50"></div> */}
