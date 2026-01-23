@@ -441,7 +441,7 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
         });
       }
 
-      if (data.presupuesto === 'presupuesto-intermedio' || data.presupuesto === 'presupuesto-alto') {
+      if (data.presupuesto === 'presupuesto-intermedio' || data.presupuesto === 'presupuesto-alto' || data.presupuesto === 'presupuesto-muy-alto') {
         window.location.href = '/pages/calendly';
       } else {
         window.location.href = '/pages/nothing-for-you-now';
