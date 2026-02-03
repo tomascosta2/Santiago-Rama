@@ -79,7 +79,7 @@ export default function Home() {
             </span>
           </h1>
           <p className="text-white/80 text-center mt-2">
-            (Sin Dietas Extremas Ni Rutinas Agobiantes)
+            (Sin dietas extremas ni rutinas agobiantes y nunca solo, sino con un experto en pérdida de peso sostenible a tu lado)
           </p>
           <section className="relative">
             <div className="bg-[#131313] p-1 pt-0 border-1 border-[var(--primary)] overflow-clip rounded-[12px] md:rounded-[16px] border-[var(--primary)] mt-6 max-w-[750px] mx-auto">
