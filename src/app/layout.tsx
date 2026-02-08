@@ -4,8 +4,8 @@ import Script from "next/script";
 import { coachName, hotjarID } from "./utils/constantes";
 
 export const metadata: Metadata = {
-  title: `${coachName} Fit - Baja entre 5 y 15 kilogramos de grasa con mi metodo para adultos ocupados`,
-  description: `${coachName} Fit - Baja entre 5 y 15 kilogramos de grasa con mi metodo para adultos ocupados`,
+  title: `${coachName} Santiago Rama Coach - Elimina la Grasa Abdominal Bajando entre 10 y 20 kg, Recupera tu energía y Vitalidad con mi Método Sostenible en 12 semanas`,
+  description: `${coachName} Santiago Rama Coach - Elimina la Grasa Abdominal Bajando entre 10 y 20 kg, Recupera tu energía y Vitalidad con mi Método Sostenible en 12 semanas`,
 };
 
 export default function RootLayout({
