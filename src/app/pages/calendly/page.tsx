@@ -93,14 +93,21 @@ export default function CalendlyFast() {
       {/* HERO + contenido tuyo igual que antes… */}
       <section className="pt-8 pb-[80px]">
         <div className="max-w-[1200px] mx-auto px-4">
+          {/* <div className="mt-8 hidden md:block">
+                <img
+                  className="h-[40px]"
+                  src="/images/reviews-nano.png"
+                  alt={`${ALT_IMG_GENERIC}`}
+                />
+              </div> */}
           <h1 className="text-[24px] md:text-[32px] font-bold leading-[120%] max-w-[800px] mb-8 mx-auto text-center">
             <span className="text-[var(--primary)]">¡Último paso!</span> Elegí
             una fecha y hora que te queden cómodas y empezá hoy mismo!
           </h1>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="flex items-center gap-8">
             {/* Columna de textos (igual que la tuya) */}
-            <div className="md:-order-1 order-2">
+            {/* <div className="md:-order-1 order-2">
               <h2 className="text-[20px] sm:text-[28px] font-bold leading-[120%] mb-6 sm:mb-8 text-white">
                 {CALENDLY_TITLE_PART1}{" "}
                 <span className="underline">{CALENDLY_SPAN}</span>.{" "}
@@ -124,14 +131,8 @@ export default function CalendlyFast() {
                 Te <strong>garantizamos</strong> que te vas con ideas claras de
                 cómo bajar de peso de un experto en perdida de peso sostenible.
               </p>
-              {/* <div className="mt-8 hidden md:block">
-                <img
-                  className="h-[40px]"
-                  src="/images/reviews-nano.png"
-                  alt={`${ALT_IMG_GENERIC}`}
-                />
-              </div> */}
-            </div>
+              
+            </div> */}
 
             {/* Calendly ultra rápido con iframe directo */}
             <div className="bg-white w-full min-h-[600px] rounded-lg overflow-clip relative">
@@ -159,7 +160,7 @@ export default function CalendlyFast() {
               />
             </div>
 
-            <p>
+            {/* <p>
               En caso de no encontrar horarios disponibles escribime por
               WhatsApp al{" "}
               <a
@@ -169,7 +170,7 @@ export default function CalendlyFast() {
               >
                 +{waNumber}
               </a>
-            </p>
+            </p> */}
 
             {/* <div className="mt-8 md:hidden block mx-auto">
               <img
