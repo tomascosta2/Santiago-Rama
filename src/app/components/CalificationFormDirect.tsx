@@ -1,14 +1,19 @@
 'use client';
 
-import { hostname } from 'os';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { COMPLETED_FORM, COMPLETED_FORM_TEST, FIRST_STEP_FORM, FIRST_STEP_FORM_TEST } from '../utils/constantes';
+import {
+  COMPLETED_FORM,
+  COMPLETED_FORM_TEST,
+  FIRST_STEP_FORM,
+  FIRST_STEP_FORM_TEST,
+} from '../utils/constantes';
 
 type Props = {
   variant: string;
   onClose: () => void;
 };
+
 type Opcion = { value: string; label: string };
 
 type FormValues = {
@@ -25,7 +30,6 @@ type FormValues = {
   objetivo: string;
   ad: string;
 };
-
 
 // IDs válidos de preguntas de opción única
 type SingleId = Extract<
@@ -111,7 +115,6 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
   const leadIdRef = useRef<string>('');
 
   useEffect(() => {
-    // 1 leadId por sesión (sirve para update en el submit final)
     const existing = sessionStorage.getItem('leadId');
     const id = existing ?? `lead-${Date.now()}-${Math.random().toString(16).slice(2)}`;
     leadIdRef.current = id;
@@ -126,68 +129,21 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
       {
         type: 'contact',
         id: 'contact',
-        title:
-          'Completá tus datos para agendar tu consulta gratuita y ver si somos un buen fit',
-        subtitle:
-          'Tus datos son 100% confidenciales. Te tomará menos de 1 minuto.',
+        title: 'Completá tus datos para agendar tu consulta gratuita y ver si somos un buen fit',
+        subtitle: 'Tus datos son 100% confidenciales. Te tomará menos de 1 minuto.',
       },
-      // {
-      //   type: 'single',
-      //   id: 'cuerpo',
-      //   required: true,
-      //   title: '¿Cómo describirías tu cuerpo hoy?*',
-      //   subtitle:
-      //     'No te preocupes, nadie va a juzgarte. Solo queremos entender por dónde empezar.',
-      //   options: [
-      //     {
-      //       value: 'sobrepeso-15kg',
-      //       label: 'Tengo sobrepeso (quiero perder más de 15 kg por salud)',
-      //     },
-      //     {
-      //       value: 'fuera-de-forma',
-      //       label:
-      //         'Estoy fuera de forma (quiero perder entre 7 y 15 kg y quiero verme mejor)',
-      //     },
-      //     {
-      //       value: 'delgado-grasa',
-      //       label:
-      //         'Soy delgado(a), pero tengo grasa rebelde que quiero eliminar y ganar músculo',
-      //     },
-      //     { value: 'otro', label: 'Otro' },
-      //   ],
-      // },
-      // {
-      //   type: 'single',
-      //   id: 'urgencia',
-      //   required: true,
-      //   title: '¿Qué tan urgente es para ti cambiar tu cuerpo ahora mismo?*',
-      //   subtitle:
-      //     'Responde con total sinceridad. Esto nos ayuda a ver cómo ayudarte.',
-      //   options: [
-      //     { value: '3', label: '(3 de 10) Estoy buscando info. No es prioridad ahora.' },
-      //     { value: '5', label: '(5 de 10) Quiero empezar pronto. Me estoy motivando.' },
-      //     {
-      //       value: '7',
-      //       label:
-      //         '(7 de 10) Quiero empezar ya. Me frustra cómo me siento y quiero recuperar mi salud y autoestima.',
-      //     },
-      //     {
-      //       value: '10',
-      //       label:
-      //         '(10 de 10) No puedo esperar más. Esto me afecta física y mentalmente. Haré lo que haga falta.',
-      //     },
-      //   ],
-      // },
       {
         type: 'single',
         id: 'ocupacion',
         required: true,
         title: '¿A qué te dedicas?*',
-        subtitle:
-          'Esto nos ayuda a adaptar tu alimentación y entrenamiento a tu estilo de vida.',
+        subtitle: 'Esto nos ayuda a adaptar tu alimentación y entrenamiento a tu estilo de vida.',
         options: [
           { value: 'negocio-propio', label: 'Tengo mi propio negocio con empleados' },
-          { value: 'profesional', label: 'Soy profesional (Abogado, Médico, Ingeniero, Programador, etc.)' },
+          {
+            value: 'profesional',
+            label: 'Soy profesional (Abogado, Médico, Ingeniero, Programador, etc.)',
+          },
           { value: 'freelance', label: 'Freelance / Home office' },
           { value: 'trabajador', label: 'Trabajo manual / fisico' },
           { value: 'otro', label: 'Otro' },
@@ -219,10 +175,8 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
         type: 'text',
         id: 'objetivo',
         required: true,
-        title:
-          '¿Cuál es tu objetivo de salud/calidad de vida y cómo querés sentirte en los próximos meses?*',
-        subtitle:
-          'Cuanto más nos cuentes, mejor vamos a poder ayudarte.',
+        title: '¿Cuál es tu objetivo de salud/calidad de vida y cómo querés sentirte en los próximos meses?*',
+        subtitle: 'Cuanto más nos cuentes, mejor vamos a poder ayudarte.',
         placeholder:
           'Ej: Tener más energía, dejar de cansarme, sentirme bien con mi cuerpo, mejorar mi salud...',
       },
@@ -234,7 +188,10 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
           'En caso de ser aceptado y sabiendo que es un servicio integral de 3 a 6 meses ¿Cuanto estas dispuesto a invertir en vos, tu salud y tu fisico y ser acompañado ayudandote a lograr tus objetivos de forma garantizada? *',
         options: [
           { value: 'presupuesto-bajo', label: 'Menos de 200 USD (En este caso no vas a poder agendar)' },
-          { value: 'presupuesto-intermedio', label: 'Entre 200 y 400 USD y puedo pagar el resto en cuotas' },
+          {
+            value: 'presupuesto-intermedio',
+            label: 'Entre 200 y 400 USD y puedo pagar el resto en cuotas',
+          },
           { value: 'presupuesto-alto', label: 'Entre 400 y 800 USD' },
           { value: 'presupuesto-muy-alto', label: '+800 USD' },
         ],
@@ -264,79 +221,25 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
 
   const canAdvanceFromStep = (s: ContactStep | SingleStep | TextStep) => {
     if (s.type === 'contact') return isContactValid();
-
-    if (s.type === 'single' && s.required === true) {
-      return !!values[s.id];
-    }
-
-    if (s.type === 'text' && s.required === true) {
-      return (values.objetivo ?? '').trim().length > 10;
-    }
-
+    if (s.type === 'single' && s.required === true) return !!values[s.id];
+    if (s.type === 'text' && s.required === true) return (values.objetivo ?? '').trim().length > 10;
     return true;
   };
-
 
   const back = () => setStepIndex((i) => Math.max(0, i - 1));
   const next = () => setStepIndex((i) => Math.min(totalSteps - 1, i + 1));
 
-  // Atajos teclado (respetan validación)
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      const step = steps[stepIndex];
-      if (step.type === 'single') {
-        const selectByIndex = (idx: number) => {
-          const opt = step.options[idx];
-          if (!opt) return;
-          setValue(step.id, opt.value as FormValues[SingleId], { shouldValidate: true });
-          next();
-        };
-
-        const key = e.key.toLowerCase();
-        if (['1', '2', '3', '4', '5', '6'].includes(key)) selectByIndex(Number(key) - 1);
-        if (['a', 'b', 'c', 'd', 'e', 'f'].includes(key))
-          selectByIndex(key.charCodeAt(0) - 'a'.charCodeAt(0));
-      }
-
-      if (e.key === 'Enter' || e.key === 'ArrowRight') {
-        const s = steps[stepIndex];
-        if (canAdvanceFromStep(s)) next();
-      }
-      if (e.key === 'Escape' || e.key === 'ArrowLeft') back();
-    };
-
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [stepIndex, steps, setValue, values]);
-
-  // Query param ad
-  useEffect(() => {
-    const searchParams = new URLSearchParams(window.location.search);
-    const adParam = searchParams.get('ad');
-    if (adParam) setValue('ad', adParam);
-  }, [setValue]);
-
-  // Bloquear scroll del body
-  useEffect(() => {
-    const b = document.querySelector('body');
-    b?.classList.add('overflow-hidden');
-    return () => b?.classList.remove('overflow-hidden');
-  }, []);
-
-  
-  const hostname = typeof window !== "undefined" ? window.location.hostname : "";
-
-  const N8N_CONTACT_WEBHOOK = hostname.includes("localhost") ?
-					FIRST_STEP_FORM_TEST :
-					FIRST_STEP_FORM;
+  // Hostname seguro (sin importar 'os')
+  const currentHostname = typeof window !== 'undefined' ? window.location.hostname : '';
+  const N8N_CONTACT_WEBHOOK = currentHostname.includes('localhost')
+    ? FIRST_STEP_FORM_TEST
+    : FIRST_STEP_FORM;
 
   const sentContactRef = useRef(false);
 
   const sendContactToN8N = async () => {
     if (sentContactRef.current) return; // no duplicar
     if (!isContactValid()) return;
-
-    console.log('Enviando contacto a N8N...');
 
     sentContactRef.current = true;
 
@@ -353,25 +256,89 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
       ts: new Date().toISOString(),
     };
 
-    // fire-and-forget (no frena UX)
     fetch(N8N_CONTACT_WEBHOOK, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify([payload]),
-    }).catch(() => { });
+    }).catch(() => {});
   };
+
+  // Avanzar centralizado (incluye envío a N8N cuando corresponde)
+  const advance = async () => {
+    const s = steps[stepIndex];
+    if (!canAdvanceFromStep(s)) return;
+
+    if (s.type === 'contact') {
+      await sendContactToN8N();
+    }
+
+    next();
+  };
+
+  // Atajos teclado (respetan validación + envían contacto si corresponde)
+  useEffect(() => {
+    const onKey = async (e: KeyboardEvent) => {
+      const step = steps[stepIndex];
+
+      if (step.type === 'single') {
+        const selectByIndex = async (idx: number) => {
+          const opt = step.options[idx];
+          if (!opt) return;
+          setValue(step.id, opt.value as FormValues[SingleId], { shouldValidate: true });
+          // avanzar
+          await advance();
+        };
+
+        const key = e.key.toLowerCase();
+        if (['1', '2', '3', '4', '5', '6'].includes(key)) {
+          e.preventDefault();
+          await selectByIndex(Number(key) - 1);
+          return;
+        }
+        if (['a', 'b', 'c', 'd', 'e', 'f'].includes(key)) {
+          e.preventDefault();
+          await selectByIndex(key.charCodeAt(0) - 'a'.charCodeAt(0));
+          return;
+        }
+      }
+
+      if (e.key === 'Enter' || e.key === 'ArrowRight') {
+        e.preventDefault();
+        await advance();
+        return;
+      }
+
+      if (e.key === 'Escape' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        back();
+      }
+    };
+
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stepIndex, steps, setValue, values]); // values para que valide con lo último
+
+  // Query param ad
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const adParam = searchParams.get('ad');
+    if (adParam) setValue('ad', adParam);
+  }, [setValue]);
+
+  // Bloquear scroll del body
+  useEffect(() => {
+    const b = document.querySelector('body');
+    b?.classList.add('overflow-hidden');
+    return () => b?.classList.remove('overflow-hidden');
+  }, []);
 
   // ------- Submit
   const onSubmit = async (data: FormValues) => {
-    // ✅ Type guard reutilizable
     const isSingleRequired = (s: ContactStep | SingleStep | TextStep): s is SingleStep =>
       s.type === 'single' && s.required === true;
 
-
-    // Doble seguro: si falta algún single requerido, volver al primero que falte
-    const requiredIds = steps
-      .filter(isSingleRequired)      // <- ahora devuelve siempre boolean y estrecha el tipo
-      .map((s) => s.id);
+    const requiredIds = steps.filter(isSingleRequired).map((s) => s.id);
 
     const missing = requiredIds.find((id) => !data[id]);
     if (missing) {
@@ -383,28 +350,27 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
     try {
       setLoading(true);
 
-      console.log(data)
-
-      // test
+      // test (no frena)
       try {
-        const result = await fetch(`${COMPLETED_FORM_TEST}`, {
+        await fetch(`${COMPLETED_FORM_TEST}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify([{ ...data, variant, leadId: leadIdRef.current }]),
         });
-        console.log(result)
-      } catch { }
+      } catch {}
 
       // production
       await fetch(`${COMPLETED_FORM}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify([{ ...data, variant, leadId: leadIdRef.current }]),
+        body: JSON.stringify([{ ...data, variant, leadId: leadIdRef.current }]),
       });
 
       const isQualified =
-        (data.presupuesto === 'presupuesto-intermedio' || data.presupuesto === 'presupuesto-alto' || data.presupuesto === 'presupuesto-muy-alto') &&
-        (data.edad === 'adulto' || data.edad === 'mayor')
+        (data.presupuesto === 'presupuesto-intermedio' ||
+          data.presupuesto === 'presupuesto-alto' ||
+          data.presupuesto === 'presupuesto-muy-alto') &&
+        (data.edad === 'adulto' || data.edad === 'mayor');
 
       localStorage.setItem('isQualified', isQualified ? 'true' : 'false');
       localStorage.setItem('name', data.name);
@@ -412,15 +378,14 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
       localStorage.setItem('phone', `${data.codigoPais}${data.telefono}`);
 
       const fbp =
-        document.cookie.split('; ').find((row) => row.startsWith('_fbp='))?.split('=')[1] ||
-        null;
+        document.cookie.split('; ').find((row) => row.startsWith('_fbp='))?.split('=')[1] || null;
 
       const getCookieValue = (cookieName: string) => {
         const name = cookieName + '=';
         const decodedCookie = decodeURIComponent(document.cookie);
         const ca = decodedCookie.split(';');
         for (let i = 0; i < ca.length; i++) {
-          let c = ca[i].trim();
+          const c = ca[i].trim();
           if (c.indexOf(name) === 0) return c.substring(name.length, c.length);
         }
         return '';
@@ -441,7 +406,11 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
         });
       }
 
-      if (data.presupuesto === 'presupuesto-intermedio' || data.presupuesto === 'presupuesto-alto' || data.presupuesto === 'presupuesto-muy-alto') {
+      if (
+        data.presupuesto === 'presupuesto-intermedio' ||
+        data.presupuesto === 'presupuesto-alto' ||
+        data.presupuesto === 'presupuesto-muy-alto'
+      ) {
         window.location.href = '/pages/calendly';
       } else {
         window.location.href = '/pages/nothing-for-you-now';
@@ -449,6 +418,7 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
     } catch (e) {
       console.error(e);
       setLoading(false);
+      sentContactRef.current = false; // por si querés reintentar desde UI
     }
   };
 
@@ -483,13 +453,14 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
 
   const progress = useMemo(() => {
     if (totalSteps <= 1) return 0;
-    // typeform-style: arranca con un poquito y termina en 100
     return Math.round(((stepIndex + 1) / totalSteps) * 100);
   }, [stepIndex, totalSteps]);
 
-
   return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center px-4" style={{ zIndex: 10000 }}>
+    <div
+      className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center px-4"
+      style={{ zIndex: 10000 }}
+    >
       <div
         ref={containerRef}
         className="w-full md:max-w-[720px] max-h-[calc(100vh-80px)] overflow-y-auto rounded-[20px] border border-white/10 bg-[#111] p-6 md:p-10 shadow-2xl"
@@ -514,9 +485,7 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
         <h2 className="text-[22px] md:text-[26px] font-semibold text-white leading-tight">
           {step.title}
         </h2>
-        {'subtitle' in step && step.subtitle && (
-          <p className="text-white/70 mt-2">{step.subtitle}</p>
-        )}
+        {'subtitle' in step && step.subtitle && <p className="text-white/70 mt-2">{step.subtitle}</p>}
 
         <form className="mt-6" onSubmit={handleSubmit(onSubmit)} autoComplete="on">
           {step.type === 'contact' && (
@@ -541,9 +510,7 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
                   {...register('email', { required: 'Campo requerido' })}
                   className="mt-2 w-full rounded-lg bg-white text-[#111] px-4 py-3 outline-none"
                 />
-                {errors.email && (
-                  <span className="text-red-400 text-xs">{errors.email.message}</span>
-                )}
+                {errors.email && <span className="text-red-400 text-xs">{errors.email.message}</span>}
               </label>
 
               <div>
@@ -563,6 +530,7 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
                       </option>
                     ))}
                   </select>
+
                   <input
                     type="tel"
                     placeholder="Número"
@@ -573,8 +541,9 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
                     className="flex-1 bg-white text-[#111]/80 rounded-lg px-4 py-2 outline-none min-w-0"
                   />
                 </div>
-                {(errors as any).codigoPais && (
-                  <span className="text-red-400 text-xs">{(errors as any).codigoPais.message}</span>
+
+                {errors.codigoPais && (
+                  <span className="text-red-400 text-xs">{errors.codigoPais.message}</span>
                 )}
                 {errors.telefono && (
                   <span className="text-red-400 text-xs">{errors.telefono.message}</span>
@@ -593,7 +562,10 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
                   selected={values[step.id] === op.value}
                   onClick={() => {
                     setValue(step.id, op.value as FormValues[SingleId], { shouldValidate: true });
-                    setTimeout(() => setStepIndex((i) => Math.min(totalSteps - 1, i + 1)), 120);
+                    // avanzar como en Typeform
+                    setTimeout(() => {
+                      setStepIndex((i) => Math.min(totalSteps - 1, i + 1));
+                    }, 120);
                   }}
                 />
               ))}
@@ -606,13 +578,11 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
                 data-autofocus
                 rows={5}
                 placeholder={step.placeholder}
-                {...register('objetivo', { required: step.required })}
+                {...register('objetivo', { required: step.required ? 'Este campo es obligatorio' : false })}
                 className="w-full rounded-xl bg-white text-[#111] px-4 py-3 outline-none resize-none"
               />
               {errors.objetivo && (
-                <span className="text-red-400 text-xs mt-1 block">
-                  Este campo es obligatorio
-                </span>
+                <span className="text-red-400 text-xs mt-1 block">{errors.objetivo.message}</span>
               )}
             </div>
           )}
@@ -627,7 +597,7 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
                   onClose();
                   return;
                 }
-                setStepIndex((i) => Math.max(0, i - 1));
+                back();
               }}
               className="px-4 py-3 rounded-lg border border-white/15 text-white/90 hover:bg-white/10 transition"
               disabled={loading}
@@ -642,18 +612,7 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
             ) : (
               <button
                 type="button"
-                onClick={async () => {
-                  const s = steps[stepIndex];
-
-                  if (canAdvanceFromStep(s)) {
-                    // Si estamos en el paso de contacto, mandamos el lead a n8n
-                    if (s.type === 'contact') {
-                      await sendContactToN8N();
-                    }
-
-                    setStepIndex((i) => i + 1);
-                  }
-                }}
+                onClick={advance}
                 className="cf-btn"
                 disabled={loading || !canAdvanceFromStep(step)}
               >
@@ -670,7 +629,7 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
                     <path
                       d="M6.41318 11.6364L5.09499 10.3296L8.55522 6.86932H0.447266V4.94887H8.55522L5.09499 1.49432L6.41318 0.181824L12.1404 5.9091L6.41318 11.6364Z"
                       fill="#FFF"
-                    ></path>
+                    />
                   </svg>
                 )}
               </button>
@@ -678,7 +637,9 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
           </div>
 
           <p className="text-white/70 text-xs mt-4">
-            PD: Este programa esta pensado para padres ocupados, buscando resultados reales, mediante el cambio de hábitos, de forma sostenible. No es la tipica rutina o dieta extrema, que puede seguir alguien con mucho tiempo libre
+            PD: Este programa esta pensado para padres ocupados, buscando resultados reales, mediante el cambio de
+            hábitos, de forma sostenible. No es la tipica rutina o dieta extrema, que puede seguir alguien con mucho
+            tiempo libre
           </p>
         </form>
       </div>
