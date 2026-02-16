@@ -180,20 +180,36 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
         placeholder:
           'Ej: Tener más energía, dejar de cansarme, sentirme bien con mi cuerpo, mejorar mi salud...',
       },
+      // {
+      //   type: 'single',
+      //   id: 'presupuesto',
+      //   required: true,
+      //   title:
+      //     'En caso de ser aceptado y sabiendo que es un servicio integral de 3 a 6 meses ¿Cuanto estas dispuesto a invertir en vos, tu salud y tu fisico y ser acompañado ayudandote a lograr tus objetivos de forma garantizada? *',
+      //   options: [
+      //     { value: 'presupuesto-bajo', label: 'Menos de 200 USD (En este caso no vas a poder agendar)' },
+      //     {
+      //       value: 'presupuesto-intermedio',
+      //       label: 'Entre 200 y 400 USD y puedo pagar el resto en cuotas',
+      //     },
+      //     { value: 'presupuesto-alto', label: 'Entre 400 y 800 USD' },
+      //     { value: 'presupuesto-muy-alto', label: '+800 USD' },
+      //   ],
+      // },
       {
         type: 'single',
         id: 'presupuesto',
         required: true,
         title:
-          'En caso de ser aceptado y sabiendo que es un servicio integral de 3 a 6 meses ¿Cuanto estas dispuesto a invertir en vos, tu salud y tu fisico y ser acompañado ayudandote a lograr tus objetivos de forma garantizada? *',
+          '¿Que tipo de solucion estas buscando para mejorar tu fisico, salud y bienestar?',
         options: [
-          { value: 'presupuesto-bajo', label: 'Menos de 200 USD (En este caso no vas a poder agendar)' },
+          { value: 'presupuesto-bajo', label: 'Quiero una solución económica' },
           {
             value: 'presupuesto-intermedio',
-            label: 'Entre 200 y 400 USD y puedo pagar el resto en cuotas',
+            label: 'Quiero un acompañamiento personalizado, con seguimiento 1 a 1, y no busco la opción mas económica. Estoy dispuesto a acceder a un plan de pagos, e invertir en mi salud.',
           },
-          { value: 'presupuesto-alto', label: 'Entre 400 y 800 USD' },
-          { value: 'presupuesto-muy-alto', label: '+800 USD' },
+          { value: 'presupuesto-alto', label: 'Quiero una solución premium, el precio no es un problema cuando hablamos de mi salud' },
+          // { value: 'presupuesto-muy-alto', label: '+800 USD' },
         ],
       },
     ],
