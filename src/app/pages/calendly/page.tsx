@@ -125,6 +125,12 @@ export default function CalendlyFast() {
 
         // Envío del evento a tu API sólo si calificado
         if (isQualified === "true") {
+          const eventId = `schedule-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+
+          if (typeof window !== "undefined" && typeof (window as any).fbq === "function") {
+            (window as any).fbq("track", "Schedule", {}, { eventID: eventId });
+          }
+
           fetch("/api/track/qualified-shedule", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -134,7 +140,7 @@ export default function CalendlyFast() {
               phone: currentPhone,
               fbp,
               fbc,
-              eventId: `schedule-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+              eventId,
             }),
           }).catch((err) => console.error("Qualified schedule error:", err));
         }
