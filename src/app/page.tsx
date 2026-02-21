@@ -65,7 +65,13 @@ export default function Home() {
       <header className="bg-linear-0 from-[#0E0E0E] to-[#1C1B1B] max-w-[85%] w-[500px] rounded-full mx-auto border border-[var(--primary)]/30 z-50">
         <div className="cf-container">
           <h3 className="text-center uppercase text-[var(--text-primary)]/80 tracking-widest text-[12px] py-3 leading-[130%]">
-            <span>Exclusivo para Padres con altas Responsabilidades Laborales</span>
+            {
+              variant === "A" ? (
+                <><span>Exclusivo para Padres con altas Responsabilidades Laborales</span></>
+              ) : (
+                <><span>Servicio especializado en hombres mayores de 40 años</span></>
+              )            
+            }            
           </h3>
         </div>
       </header>

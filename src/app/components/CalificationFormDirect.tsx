@@ -638,7 +638,12 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
                 className="cf-btn"
                 disabled={loading || !canAdvanceFromStep(step)}
               >
-                Continuar
+                {
+                  !canAdvanceFromStep(step) ? 'Completa para continuar'
+                    : loading
+                    ? 'Cargando...'
+                    : 'Continuar'
+                }
                 {!loading && (
                   <svg
                     width="13"
