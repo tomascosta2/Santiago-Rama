@@ -111,7 +111,7 @@ export default function ThankYou() {
         {/* Checklist de compromiso */}
         <div className="rounded-xl border p-4 bg-white mb-4">
           <p className="font-semibold text-[18px] mb-2 text-black">
-            Checklist (2 minutos) — marcá para habilitar la confirmación:
+            Marcá los 3 pasos para confirmar tu lugar:
           </p>
           <label className="flex items-start gap-3 text-[16px] text-black mb-2">
             <input type="checkbox" className="mt-1" checked={agreeQuietPlace} onChange={e => setAgreeQuietPlace(e.target.checked)} />
@@ -230,7 +230,7 @@ export default function ThankYou() {
         {/* Checklist de compromiso */}
         <div className="rounded-xl border p-4 bg-white mt-8">
           <p className="font-semibold text-[18px] mb-2 text-black">
-            Checklist (2 minutos) — marcá para habilitar la confirmación:
+            Marcá los 3 pasos para confirmar tu lugar:
           </p>
           <label className="flex items-start gap-3 text-[16px] text-black mb-2">
             <input type="checkbox" className="mt-1" checked={agreeQuietPlace} onChange={e => setAgreeQuietPlace(e.target.checked)} />
