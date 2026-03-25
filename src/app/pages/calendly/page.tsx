@@ -26,13 +26,11 @@ const ensureFbcFromFbclid = () => {
   const fbclid = params.get("fbclid");
   if (!fbclid) return;
 
-  // si ya existe _fbc, no lo pisamos
   const existing = getCookieValue("_fbc");
   if (existing) return;
 
   const fbc = `fb.1.${Date.now()}.${fbclid}`;
 
-  // En localhost, Secure puede hacer que no se setee en http
   const isLocalhost =
     window.location.hostname.includes("localhost") ||
     window.location.hostname.includes("127.0.0.1");
@@ -43,10 +41,22 @@ const ensureFbcFromFbclid = () => {
 
   document.cookie = cookie;
 
-  // también lo guardamos por si querés leerlo desde localStorage
   try {
     localStorage.setItem("_fbc", fbc);
   } catch {}
+};
+
+const mapPresupuesto = (answer: string): string => {
+  if (answer.includes("No estoy dispuesto")) return "No invertir";
+  if (answer.includes("800") && answer.includes("1000")) return "$800-1000+";
+  if (answer.includes("400") && answer.includes("800")) return "$400-800";
+  if (answer.includes("200") || answer.includes("plan de pagos")) return "Plan pagos ~$200";
+  return answer;
+};
+
+const mapOcupacion = (answer: string): string => {
+  const idx = answer.indexOf(" (");
+  return idx !== -1 ? answer.substring(0, idx).trim() : answer.trim();
 };
 
 export default function CalendlyFast() {
@@ -55,17 +65,20 @@ export default function CalendlyFast() {
   const [phone, setPhone] = useState("");
   const [frameLoaded, setFrameLoaded] = useState(false);
 
-  // refs para evitar valores viejos dentro del listener
   const emailRef = useRef("");
   const phoneRef = useRef("");
+  const adRef = useRef("");
 
   useEffect(() => {
-    // Intentar garantizar _fbc si viene fbclid (útil para test)
     ensureFbcFromFbclid();
 
     const n = localStorage.getItem("name") || "";
     const e = localStorage.getItem("email") || "";
     const p = localStorage.getItem("phone") || "";
+
+    // Anuncio: leer param "app" de la URL, fallback a localStorage
+    const urlParams = new URLSearchParams(window.location.search);
+    const ad = urlParams.get("ad") || localStorage.getItem("ad") || "";
 
     setName(n);
     setEmail(e);
@@ -73,9 +86,9 @@ export default function CalendlyFast() {
 
     emailRef.current = e;
     phoneRef.current = p;
+    adRef.current = ad;
   }, []);
 
-  // mantener refs actualizadas
   useEffect(() => {
     emailRef.current = email;
   }, [email]);
@@ -87,68 +100,122 @@ export default function CalendlyFast() {
   // Listener de eventos de Calendly
   useEffect(() => {
     const handleCalendlyEvent = (e: MessageEvent) => {
-      // Calendly puede emitir desde calendly.com y desde subdominios
       const origin = (e.origin || "").toLowerCase();
       if (!origin.endsWith("calendly.com")) return;
 
       if (e.data?.event === "calendly.event_scheduled") {
         const currentEmail = emailRef.current;
         const currentPhone = phoneRef.current;
-
-        // Track interno (tu webhook/endpoint)
-        fetch(CALL_SHEDULED, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: currentEmail }),
-        }).catch((err) => console.error("Tracking error:", err));
-
+        const currentAd = adRef.current;
         const isQualified = localStorage.getItem("isQualified");
 
-        // ✅ Leer fbp/fbc desde cookies (lo correcto)
         const fbpCookie = getCookieValue("_fbp");
         const fbcCookie = getCookieValue("_fbc");
-
-        // fallback por si querés testear con localStorage
         const fbp = fbpCookie || localStorage.getItem("_fbp") || null;
         const fbc = fbcCookie || localStorage.getItem("_fbc") || null;
 
-        // guardar para debugging / consistencia
         try {
           if (fbp) localStorage.setItem("_fbp", fbp);
           if (fbc) localStorage.setItem("_fbc", fbc);
         } catch {}
 
-        // Debug local (sacalo cuando termines)
-        console.log("[Calendly scheduled] email:", currentEmail);
-        console.log("[Calendly scheduled] fbp:", fbp);
-        console.log("[Calendly scheduled] fbc:", fbc);
+        const eventId = `schedule-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+        const inviteeUri = e.data.payload?.invitee?.uri;
+        const eventUri = e.data.payload?.event?.uri;
 
-        // Envío del evento a tu API sólo si calificado
-        if (isQualified === "true") {
-          const eventId = `schedule-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+        const sendAll = (
+          questions_and_answers: { answer: string; position: number; question: string }[] = [],
+          startTime?: string
+        ) => {
+          const byPos = (pos: number) => questions_and_answers.find((q) => q.position === pos)?.answer;
 
-          if (typeof window !== "undefined" && typeof (window as any).fbq === "function") {
-            (window as any).fbq("track", "Schedule", {}, { eventID: eventId });
-          }
+          const edad = byPos(0);
+          const ocupacion = byPos(1) ? mapOcupacion(byPos(1)!) : undefined;
+          const objetivo = byPos(2);
+          const presupuesto = byPos(3) ? mapPresupuesto(byPos(3)!) : undefined;
 
-          fetch("/api/track/qualified-shedule", {
+          // FFA Analytics
+          fetch("/api/analytics/lead", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              eventName: "Schedule",
               email: currentEmail,
               phone: currentPhone,
               fbp,
               fbc,
-              eventId,
+              ad: currentAd || undefined,
+              agendo: "Si",
+              edad,
+              ocupacion,
+              objetivo,
+              presupuesto,
+              ...(startTime && { scheduledAt: startTime }),
             }),
-          }).catch((err) => console.error("Qualified schedule error:", err));
-        }
+          })
+            .then((r) => r.json())
+            .then((res) => console.log("[FFA] response:", res))
+            .catch((err) => console.error("FFA error:", err));
 
-        // Redirección a Thank You
-        setTimeout(() => {
-          window.location.href = "/pages/thankyou";
-        }, 600);
+          // n8n
+          fetch(CALL_SHEDULED, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              email: currentEmail,
+              phone: currentPhone,
+              fbp,
+              fbc,
+              isQualified,
+              questions_and_answers,
+            }),
+          }).catch((err) => console.error("CALL_SHEDULED error:", err));
+
+          // Meta — solo si calificado
+          if (isQualified === "true") {
+            if (typeof window !== "undefined" && typeof (window as any).fbq === "function") {
+              (window as any).fbq("track", "Schedule", {}, { eventID: eventId });
+            }
+
+            fetch("/api/track/qualified-shedule", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                eventName: "Schedule",
+                email: currentEmail,
+                phone: currentPhone,
+                fbp,
+                fbc,
+                eventId,
+              }),
+            }).catch((err) => console.error("Qualified schedule error:", err));
+          }
+
+          console.log("[Calendly] enviado →", { email: currentEmail, isQualified, edad, ocupacion, presupuesto, objetivo, startTime, ad: currentAd });
+
+          // setTimeout(() => {
+          //   window.location.href = "/pages/thankyou";
+          // }, 600);
+        };
+
+        if (inviteeUri) {
+          fetch("/api/calendly/invitee", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ inviteeUri, eventUri }),
+          })
+            .then((r) => r.json())
+            .then((data) => {
+              const questions = data?.invitee?.resource?.questions_and_answers ?? [];
+              const startTime = data?.event?.resource?.start_time ?? undefined;
+              sendAll(questions, startTime);
+            })
+            .catch((err) => {
+              console.error("[Calendly invitee] error:", err);
+              sendAll();
+            });
+        } else {
+          sendAll();
+        }
       }
     };
 
@@ -158,6 +225,7 @@ export default function CalendlyFast() {
 
   const calendlyUrl = useMemo(() => {
     const params = new URLSearchParams({
+      primary_color: "0050c6",
       hide_gdpr_banner: "1",
       embed_type: "InlineWidget",
       embed_domain: typeof window !== "undefined" ? window.location.hostname : "",
@@ -201,7 +269,6 @@ export default function CalendlyFast() {
               />
             </div>
 
-            {/* Si querés volver a mostrar imagen/alt, dejé la constante importada */}
             <span className="sr-only">{ALT_IMG_GENERIC}</span>
           </div>
         </div>

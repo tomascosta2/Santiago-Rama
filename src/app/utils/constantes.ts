@@ -4,7 +4,7 @@ export const coachName = "Santiago Rama"
 
 export const pixelId = "1446567873684412"
 
-export const calendlyBaseUrl = "https://calendly.com/santiagoscf/calendario-sesion-gratuita-consultoria"
+export const calendlyBaseUrl = "https://calendly.com/santiagorama-coach-santiago/reunion-diagnostico"
 
 export const waNumber = "+5491180301000";
 
