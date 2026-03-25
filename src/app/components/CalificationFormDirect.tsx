@@ -123,6 +123,7 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify([payload]),
+        keepalive: true,
       }).catch(() => {});
 
       // Envío a Fit Funnels Analytics (server-side para no exponer la API key)
@@ -136,6 +137,7 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
           ad: data.ad,
           variant,
         }),
+        keepalive: true,
       }).catch(() => {});
 
       // Guardar en localStorage para Calendly y tracking
