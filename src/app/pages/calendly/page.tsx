@@ -4,6 +4,7 @@ import {
   ALT_IMG_GENERIC,
   calendlyBaseUrl,
   CALL_SHEDULED,
+  waNumber,
 } from "@/app/utils/constantes";
 import { useEffect, useMemo, useRef, useState } from "react";
 
@@ -192,9 +193,9 @@ export default function CalendlyFast() {
 
           console.log("[Calendly] enviado →", { email: currentEmail, isQualified, edad, ocupacion, presupuesto, objetivo, startTime, ad: currentAd });
 
-          // setTimeout(() => {
-          //   window.location.href = "/pages/thankyou";
-          // }, 600);
+          setTimeout(() => {
+            window.location.href = "/pages/thankyou";
+          }, 600);
         };
 
         if (inviteeUri) {
@@ -271,6 +272,18 @@ export default function CalendlyFast() {
 
             <span className="sr-only">{ALT_IMG_GENERIC}</span>
           </div>
+
+          <p className="text-center text-sm text-gray-500 mt-4">
+            ¿No encontrás un horario disponible?{" "}
+            <a
+              href={`https://wa.me/${waNumber.replace(/\D/g, "")}?text=Hola%2C%20quiero%20agendar%20una%20consulta%20pero%20no%20encuentro%20horario%20disponible`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[var(--primary)] underline font-medium"
+            >
+              Escribinos por WhatsApp
+            </a>
+          </p>
         </div>
       </section>
     </main>
