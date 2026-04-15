@@ -267,6 +267,12 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
               {errors.telefono && (
                 <span className="text-red-400 text-xs">{errors.telefono.message}</span>
               )}
+              {values.telefono.trim().length > 3 && values.codigoPais && !isValidPhoneNumber(`${values.codigoPais}${values.telefono.trim()}`) && (
+                <div className="mt-2 bg-amber-500/10 border border-amber-500/20 rounded-lg px-3 py-2">
+                  <p className="text-amber-400 text-xs font-semibold">El número no parece válido</p>
+                  <p className="text-amber-400/70 text-xs mt-0.5">Verificá que sea tu número sin el 0, sin el 15 y sin repetir el código de país. Ej: 1155667788</p>
+                </div>
+              )}
             </div>
           </div>
 
