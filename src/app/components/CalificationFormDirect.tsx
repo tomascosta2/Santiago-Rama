@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { isValidPhoneNumber } from 'libphonenumber-js';
 import {
   FIRST_STEP_FORM,
   FIRST_STEP_FORM_TEST,
@@ -76,7 +77,7 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
   const isFormValid = () => {
     const isNameValid = values.name.trim().length > 1;
     const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email);
-    const isPhoneValid = values.telefono.trim().length > 5 && !!values.codigoPais;
+    const isPhoneValid = !!values.codigoPais && isValidPhoneNumber(`${values.codigoPais}${values.telefono.trim()}`);
     return isNameValid && isEmailValid && isPhoneValid;
   };
 
@@ -139,6 +140,47 @@ export default function CalificationFormDirect({ variant, onClose }: Props) {
         }),
         keepalive: true,
       }).catch(() => {});
+
+      // Meta Pixel - Lead (browser)
+      if (typeof window !== 'undefined' && typeof (window as any).fbq === 'function') {
+        (window as any).fbq('track', 'Lead', {}, { eventID: leadIdRef.current });
+      }
+
+      // Meta Conversions API - Lead (server-side)
+      const getCookieValue = (cookieName: string) => {
+        if (typeof document === 'undefined') return '';
+        const name = cookieName + '=';
+        const decodedCookie = decodeURIComponent(document.cookie || '');
+        const ca = decodedCookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+          const c = ca[i].trim();
+          if (c.indexOf(name) === 0) return c.substring(name.length, c.length);
+        }
+        return '';
+      };
+
+      try {
+        const fbpCookie = getCookieValue('_fbp');
+        const fbcCookie = getCookieValue('_fbc');
+        const fbp = fbpCookie || (typeof localStorage !== 'undefined' ? localStorage.getItem('_fbp') : null);
+        const fbc = fbcCookie || (typeof localStorage !== 'undefined' ? localStorage.getItem('_fbc') : null);
+
+        fetch('/api/track/lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            eventId: leadIdRef.current,
+            email: data.email,
+            phone,
+            fbp,
+            fbc,
+            eventSourceUrl: window.location.href,
+          }),
+          keepalive: true,
+        }).catch(() => {});
+      } catch {
+        // Ignorar errores de tracking
+      }
 
       // Guardar en localStorage para Calendly y tracking
       localStorage.setItem('name', data.name);
