@@ -40,7 +40,7 @@ export default function Home() {
   const variant = variantRef.current;
   console.log(variant);
 
-  const headlineText = "Elimina la Grasa Abdominal Bajando entre 10 y 20 kg, Recupera tu energía y Vitalidad con mi Método Sostenible en 12 semanas";
+  const headlineText = "Eliminá la grasa abdominal y visceral, bajá 10 a 20kg, recuperá tu energía y vitalidad de forma sostenible, con un método adaptado a agendas exigentes, sin dietas extremas";
 
   return (
     <div className="relative overflow-clip pt-12">
@@ -73,10 +73,10 @@ export default function Home() {
           <h3 className="text-center uppercase text-[var(--text-primary)]/80 tracking-widest text-[12px] py-3 leading-[130%]">
             {
               variant === "A" ? (
-                <><span>Exclusivo para Padres con altas Responsabilidades Laborales</span></>
+                <><span>Para dueños de negocio, profesionales de alto cargo e inversores que ya tienen todo resuelto menos su salud</span></>
               ) : (
-                <><span>Servicio especializado en hombres mayores de 40 años</span></>
-              )            
+                <><span>Para hombres que ya construyeron su éxito profesional y ahora quieren construir su mejor versión física</span></>
+              )
             }            
           </h3>
         </div>
@@ -91,7 +91,7 @@ export default function Home() {
             </span>
           </h1>
           <p className="text-white/80 text-center mt-2">
-            (Sin dietas extremas ni rutinas agobiantes y nunca solo, sino con un experto en pérdida de peso sostenible a tu lado)
+            Para que tu cuerpo acompañe el éxito que ya tenés en otras áreas de tu vida
           </p>
           <section className="relative">
             <div className="bg-[#131313] p-1 pt-0 border-1 border-[var(--primary)] overflow-clip rounded-[12px] md:rounded-[16px] border-[var(--primary)] mt-6 max-w-[750px] mx-auto">
@@ -111,7 +111,7 @@ export default function Home() {
           <p className="mt-6 text-center text-[14px] mx-auto max-w-[350px]">
             <strong className="uppercase tracking-widest">Paso 2 de 2:</strong>{" "}
             <span className="text-white/80">
-              Agenda una Llamada para Asegurar tu Lugar y tu Cambio Fisico.
+              Agenda la reunión de Diagnóstico
             </span>
           </p>
 
@@ -130,12 +130,11 @@ export default function Home() {
             <div className="h-[1px] relative overflow-clip max-w-[212px] mx-auto mt-4">
               <div className="bg-radial from-white to-black/0 size-[200px]"></div>
             </div>
-            <p className="text-center mt-4 leading-[90%] text-white/40 mx-auto max-w-[350px] text-[14px] flex items-center justify-center gap-2">
-              {isUnlocked
-                ? "+50 alumnos activos"
-                : "⚠️ El botón se habilitará luego de ver el video."}
-              <img src="/images/Estrella.svg" alt="Estrellas" />
-            </p>
+            {!isUnlocked && (
+              <p className="text-center mt-4 leading-[90%] text-white/40 mx-auto max-w-[350px] text-[14px] flex items-center justify-center gap-2">
+                ⚠️ El botón se habilitará luego de ver el video.
+              </p>
+            )}
           </div>
         </div>
 
