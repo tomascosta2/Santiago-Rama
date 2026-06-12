@@ -1,6 +1,6 @@
 "use client";
 import { useRef, useState, useEffect } from "react";
-import CalificationFormDirect from "./components/CalificationFormDirect";
+import CalendlyEmbed from "./components/CalendlyEmbed";
 import Faqs from "./components/Faqs";
 import {
   ALT_IMG_GENERIC,
@@ -14,7 +14,6 @@ import {
 } from "./utils/constantes";
 
 export default function Home() {
-  const [isFormOpened, setIsFormOpened] = useState(false);
 
   // 🔒 Nuevo: control de bloqueo por 5 minutos
   const [isUnlocked, setIsUnlocked] = useState(false);
@@ -42,6 +41,10 @@ export default function Home() {
 
   const headlineText = "Eliminá la grasa abdominal y visceral, bajá 10 a 20kg, recuperá tu energía y vitalidad de forma sostenible, con un método adaptado a agendas exigentes, sin dietas extremas";
 
+  const scrollToCalendly = () => {
+    document.getElementById("calendly-inline")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <div className="relative overflow-clip pt-12">
       <img
@@ -55,12 +58,6 @@ export default function Home() {
         className="w-[700px] absolute left-0 top-0 scale-x-[-1] -z-50 hidden md:block"
       />
       <div className="bg-[var(--primary)]/80 size-[600px] rounded-full left-1/2 transform hidden md:block -translate-x-1/2 absolute -z-50  blur-[800px] -top-[400px]"></div>
-      {isFormOpened && (
-        <CalificationFormDirect
-          variant={variant}
-          onClose={() => setIsFormOpened(false)}
-        />
-      )}
       {/*       
         LOGO
       <img
@@ -115,26 +112,9 @@ export default function Home() {
             </span>
           </p>
 
-          {/* Botón bloqueado 5 minutos */}
-          <div className="mt-6">
-            <button
-              className="cf-btn disabled:opacity-60 disabled:cursor-not-allowed"
-              disabled={!isUnlocked}
-              onClick={() => {
-                if (!isUnlocked) return;
-                setIsFormOpened(true);
-              }}
-            >
-              ¡AGENDAR MI SESIÓN DE DIAGNÓSTICO!
-            </button>
-            <div className="h-[1px] relative overflow-clip max-w-[212px] mx-auto mt-4">
-              <div className="bg-radial from-white to-black/0 size-[200px]"></div>
-            </div>
-            {!isUnlocked && (
-              <p className="text-center mt-4 leading-[90%] text-white/40 mx-auto max-w-[350px] text-[14px] flex items-center justify-center gap-2">
-                ⚠️ El botón se habilitará luego de ver el video.
-              </p>
-            )}
+          {/* Calendly inline */}
+          <div id="calendly-inline" className="mt-8 max-w-[760px] mx-auto scroll-mt-6">
+            <CalendlyEmbed defaultQualified />
           </div>
         </div>
 
@@ -201,7 +181,7 @@ export default function Home() {
               <button
                 className="cf-btn"
                 onClick={() => {
-                  setIsFormOpened(true);
+                  scrollToCalendly();
                 }}
               >
                 ¡AGENDAR MI SESIÓN DE DIAGNÓSTICO!
@@ -325,7 +305,7 @@ export default function Home() {
             <button
               className="cf-btn"
               onClick={() => {
-                setIsFormOpened(true);
+                scrollToCalendly();
               }}
             >
               ¡AGENDAR MI SESIÓN DE DIAGNÓSTICO!
@@ -424,7 +404,7 @@ export default function Home() {
             <button
               className="cf-btn"
               onClick={() => {
-                setIsFormOpened(true);
+                scrollToCalendly();
               }}
             >
               ¡AGENDAR MI SESIÓN DE DIAGNÓSTICO!
@@ -515,7 +495,7 @@ export default function Home() {
                 disabled={!isUnlocked}
                 onClick={() => {
                   if (!isUnlocked) return;
-                  setIsFormOpened(true);
+                  scrollToCalendly();
                 }}
               >
                 ¡AGENDAR MI SESIÓN DE DIAGNÓSTICO!
@@ -545,7 +525,7 @@ export default function Home() {
               disabled={!isUnlocked}
               onClick={() => {
                 if (!isUnlocked) return;
-                setIsFormOpened(true);
+                scrollToCalendly();
               }}
             >
               ¡AGENDAR MI SESIÓN DE DIAGNÓSTICO!
