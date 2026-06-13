@@ -16,12 +16,12 @@ export const descriptionCalender = `Reunión 1:1 para alinear objetivos y plan.\
 export const locationCalender = "Online (se compartirá enlace)";
 
 // VSL
-export const idVsl = "panda-636f6d70-b3a0-41b2-a3b5-31d1ed059a24";
-export const srcVsl = "https://player-vz-5c2adb98-6a4.tv.pandavideo.com.br/embed/?v=636f6d70-b3a0-41b2-a3b5-31d1ed059a24";
+export const idVsl = "panda-7b10f651-5407-4e0e-a179-879dd9dee483";
+export const srcVsl = "https://player-vz-5c2adb98-6a4.tv.pandavideo.com/embed/?v=7b10f651-5407-4e0e-a179-879dd9dee483";
 
 // Thankyou
-export const idThankyou = "panda-c2965b0d-2013-4ae6-b3ee-adffba85fade";
-export const srcThankyou = "https://player-vz-5c2adb98-6a4.tv.pandavideo.com/embed/?v=c2965b0d-2013-4ae6-b3ee-adffba85fade";
+export const idThankyou = "panda-bbd692b1-e6d8-40c9-acc1-6be0bc2e87e3";
+export const srcThankyou = "https://player-vz-5c2adb98-6a4.tv.pandavideo.com/embed/?v=bbd692b1-e6d8-40c9-acc1-6be0bc2e87e3";
 
 // Make o n8n
 // export const sendForm = "https://n8n.srv953925.hstgr.cloud/webhook/19ffc8bc-f934-4d70-829a-c914d08509fc"
