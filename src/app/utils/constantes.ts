@@ -23,6 +23,27 @@ export const srcVsl = "https://player-vz-5c2adb98-6a4.tv.pandavideo.com/embed/?v
 export const idThankyou = "panda-bbd692b1-e6d8-40c9-acc1-6be0bc2e87e3";
 export const srcThankyou = "https://player-vz-5c2adb98-6a4.tv.pandavideo.com/embed/?v=bbd692b1-e6d8-40c9-acc1-6be0bc2e87e3";
 
+// Break-out videos (Loom) para la thankyou: cada pregunta/objeción con su video.
+export const BREAKOUT_VIDEOS: { q: string; loom: string }[] = [
+  { q: "¿Puedo hacer esto viajando o con agenda cambiante?", loom: "449a94a9fc6e4a9eade90d46945c4d8d" },
+  { q: "¿Cuánto tiempo por semana necesito dedicarle?", loom: "ecd6f19a346345758cfb735d756b4ba4" },
+  { q: "¿Tengo que dejar de comer lo que me gusta?", loom: "07aeb93c2c98445a8883dacc0cc775fe" },
+  { q: "¿Debo cocinar?", loom: "0a3c04da731d4ae587681acf581c26ee" },
+  { q: "¿Es lo mismo para todos o se adapta a mi situación?", loom: "697d82c6da2b4d5c948f136fdb6f8c1d" },
+  { q: "¿Cuánto puedo bajar en 6-12 meses?", loom: "b20aa029150845d38adef596f50f8ee1" },
+  { q: "¿Es igual a otros programas que veo en redes?", loom: "6d6b84343b9640029428ca142c59c528" },
+  { q: "¿Qué pasa si viajo, tengo un evento o temporada de más trabajo?", loom: "9ee275a643344da7b1d65f7bcbd9798c" },
+  { q: "¿Cuánto dura el programa?", loom: "1f52136ebd104ed793e2a3917d34ea78" },
+  { q: "¿Qué pasa si tengo una condición médica?", loom: "c95518fc68d64a9e89bd66fe62422f77" },
+  { q: "¿Esto es lo mismo que ir a un nutricionista/nutriólogo?", loom: "c95518fc68d64a9e89bd66fe62422f77" },
+  { q: "Quién soy y con quién trabajo", loom: "e79c1fb5680a4446b4427bb92aff4951" },
+  { q: "Problemas y resultados no obtenidos", loom: "9bc7a90d98c94e71aa9b93f60110586b" },
+  { q: "No es el momento ideal (trabajo, viajes, estrés). ¿Conviene esperar?", loom: "57b5234d3dc04b4cbeff2e5f2283c05c" },
+  { q: "¿Podemos reunirnos en persona?", loom: "b4dc9272152f43ae85001e643f46755e" },
+  { q: "¿Qué garantía tenés?", loom: "74088645382c486fae0094eca6e40aec" },
+  { q: "¿Esto funciona a largo plazo o voy a recuperar el peso?", loom: "2322848ea0344b4ea2a682a406d9e03e" },
+];
+
 // Make o n8n
 // export const sendForm = "https://n8n.srv953925.hstgr.cloud/webhook/19ffc8bc-f934-4d70-829a-c914d08509fc"
 

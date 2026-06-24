@@ -2,9 +2,11 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
-import { descriptionCalender, titleCalender, VIDEO_TESTIMONIALS, waNumber, locationCalender, idVsl, idThankyou, srcThankyou, TESTIMONIALS_THANKYOU_IMG, coachName } from "@/app/utils/constantes";
+import { descriptionCalender, titleCalender, VIDEO_TESTIMONIALS, waNumber, locationCalender, idVsl, idThankyou, srcThankyou, TESTIMONIALS_THANKYOU_IMG, coachName, BREAKOUT_VIDEOS } from "@/app/utils/constantes";
 
 export default function ThankYou() {
+  // Break-out videos: cuál está abierto (para cargar el iframe solo al abrirlo).
+  const [openBreakout, setOpenBreakout] = useState<string>("");
   // Opcional: recuperar datos del paso anterior
   const [name, setName] = useState<string>("");
   const [startAt, setStartAt] = useState<string>(""); // ISO e.g. "2025-11-02T14:00:00-03:00"
@@ -168,6 +170,49 @@ export default function ThankYou() {
               Sí. Planes efectivos de 3 sesiones simples por semana, 100% adaptados a tu agenda.
             </AccordionContent>
           </AccordionItem>
+        </Accordion>
+
+        {/* Break-out videos: respuestas en video a las dudas más comunes */}
+        <h3 className="text-center text-black text-[24px] leading-[115%] font-bold mb-2 mt-12">
+          Resolvé tus dudas en video
+        </h3>
+        <p className="text-center text-black/60 text-[15px] mb-6">
+          Tocá una pregunta para ver la respuesta en video.
+        </p>
+        <Accordion
+          type="single"
+          collapsible
+          value={openBreakout}
+          onValueChange={setOpenBreakout}
+          className="w-full text-black"
+        >
+          {BREAKOUT_VIDEOS.map((v, i) => {
+            const id = `bo-${i}`;
+            return (
+              <AccordionItem key={id} value={id}>
+                <AccordionTrigger className="text-[17px] font-bold leading-[120%] text-left">
+                  {v.q}
+                </AccordionTrigger>
+                <AccordionContent>
+                  {openBreakout === id && (
+                    <div
+                      className="relative w-full rounded-[10px] overflow-hidden my-2 bg-black"
+                      style={{ paddingBottom: "56.25%" }}
+                    >
+                      <iframe
+                        src={`https://www.loom.com/embed/${v.loom}`}
+                        title={v.q}
+                        allowFullScreen
+                        allow="fullscreen"
+                        className="absolute inset-0 w-full h-full"
+                        style={{ border: 0 }}
+                      />
+                    </div>
+                  )}
+                </AccordionContent>
+              </AccordionItem>
+            );
+          })}
         </Accordion>
 
         <section className="py-[40px] relative z-20">
