@@ -151,6 +151,7 @@ export default function CalendlyEmbed({ defaultQualified = false }: { defaultQua
           // FFA Analytics
           fetch("/api/analytics/lead", {
             method: "POST",
+            keepalive: true,
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
               name: currentName,
