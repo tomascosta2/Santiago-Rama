@@ -175,6 +175,7 @@ export default function CalendlyEmbed({ defaultQualified = false }: { defaultQua
           // n8n
           fetch(CALL_SHEDULED, {
             method: "POST",
+            keepalive: true,
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
               name: currentName,
@@ -192,6 +193,7 @@ export default function CalendlyEmbed({ defaultQualified = false }: { defaultQua
           if (leadEventIdRef.current && currentEmail && currentPhone) {
             fetch("/api/track/lead", {
               method: "POST",
+              keepalive: true,
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({
                 eventId: leadEventIdRef.current,
@@ -212,6 +214,7 @@ export default function CalendlyEmbed({ defaultQualified = false }: { defaultQua
 
             fetch("/api/track/qualified-shedule", {
               method: "POST",
+              keepalive: true,
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({
                 eventName: "Schedule",
@@ -225,11 +228,19 @@ export default function CalendlyEmbed({ defaultQualified = false }: { defaultQua
           }
 
           console.log("[Calendly] enviado →", { email: currentEmail, isQualified, edad, ocupacion, presupuesto, objetivo, startTime, ad: currentAd });
-
-          setTimeout(() => {
-            window.location.href = "/pages/thankyou";
-          }, 600);
         };
+
+        // Redirect garantizado e independiente de cualquier fetch: apenas Calendly
+        // confirma la reserva, redirigimos sí o sí (los envíos van con keepalive y
+        // se completan solos; FFA igual queda cubierto por el webhook server-side).
+        // Esto evita que el redirect se cuelgue en navegadores in-app (Instagram/FB).
+        let redirected = false;
+        const goThankYou = () => {
+          if (redirected) return;
+          redirected = true;
+          window.location.href = "/pages/thankyou";
+        };
+        setTimeout(goThankYou, 800);
 
         if (inviteeUri) {
           fetch("/api/calendly/invitee", {
