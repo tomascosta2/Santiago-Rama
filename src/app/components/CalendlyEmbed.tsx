@@ -64,6 +64,9 @@ export default function CalendlyEmbed({ defaultQualified = false }: { defaultQua
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [frameLoaded, setFrameLoaded] = useState(false);
+  // Red de seguridad: si el auto-redirect quedó bloqueado (navegadores con
+  // "bloquear ventanas emergentes"), mostramos un botón que el usuario toca.
+  const [showContinue, setShowContinue] = useState(false);
 
   const nameRef = useRef("");
   const emailRef = useRef("");
@@ -242,6 +245,10 @@ export default function CalendlyEmbed({ defaultQualified = false }: { defaultQua
         };
         setTimeout(goThankYou, 800);
 
+        // Si a ~1.3s seguimos acá, el auto-redirect fue bloqueado (popups
+        // bloqueados / navegación sin gesto): mostramos el botón manual.
+        setTimeout(() => setShowContinue(true), 1300);
+
         if (inviteeUri) {
           fetch("/api/calendly/invitee", {
             method: "POST",
@@ -287,6 +294,23 @@ export default function CalendlyEmbed({ defaultQualified = false }: { defaultQua
 
   return (
     <div>
+      {showContinue && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 px-6">
+          <div className="w-full max-w-[420px] rounded-2xl bg-white p-7 text-center shadow-2xl">
+            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-green-100">
+              <span className="text-3xl text-green-600">✓</span>
+            </div>
+            <h3 className="text-xl font-bold text-gray-900">¡Tu llamada está agendada!</h3>
+            <p className="mt-2 text-gray-600">Tocá el botón para ver los próximos pasos importantes.</p>
+            <a
+              href="/pages/thankyou"
+              className="mt-6 block w-full rounded-xl bg-[var(--primary)] px-6 py-3.5 text-center font-bold text-white"
+            >
+              Ver los próximos pasos →
+            </a>
+          </div>
+        </div>
+      )}
       <div className="bg-white w-full min-h-[600px] rounded-lg overflow-clip relative">
         {!frameLoaded && (
           <div className="absolute inset-0 animate-pulse bg-gray-100">
