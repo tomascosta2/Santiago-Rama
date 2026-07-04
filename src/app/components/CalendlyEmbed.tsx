@@ -132,6 +132,55 @@ export default function CalendlyEmbed({ defaultQualified = false }: { defaultQua
         const inviteeUri = e.data.payload?.invitee?.uri;
         const eventUri = e.data.payload?.event?.uri;
 
+        // Envío INMEDIATO a Meta (pixel + CAPI), antes del redirect y sin
+        // esperar el fetch del invitee: el redirect a los ~800ms cancelaba ese
+        // fetch y los eventos nunca salían. Con keepalive sobreviven la navegación.
+        let metaSent = false;
+        {
+          const immediateEmail = emailRef.current;
+          const immediatePhone = phoneRef.current;
+
+          if (isQualified === "true" && typeof (window as any).fbq === "function") {
+            (window as any).fbq("track", "Schedule", {}, { eventID: eventId });
+          }
+
+          if (immediateEmail || immediatePhone) {
+            metaSent = true;
+
+            if (leadEventIdRef.current) {
+              fetch("/api/track/lead", {
+                method: "POST",
+                keepalive: true,
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  eventId: leadEventIdRef.current,
+                  email: immediateEmail,
+                  phone: immediatePhone,
+                  fbp,
+                  fbc,
+                  eventSourceUrl: window.location.href,
+                }),
+              }).catch((err) => console.error("CAPI Lead error:", err));
+            }
+
+            if (isQualified === "true") {
+              fetch("/api/track/qualified-shedule", {
+                method: "POST",
+                keepalive: true,
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  eventName: "Schedule",
+                  email: immediateEmail,
+                  phone: immediatePhone,
+                  fbp,
+                  fbc,
+                  eventId,
+                }),
+              }).catch((err) => console.error("Qualified schedule error:", err));
+            }
+          }
+        }
+
         const sendAll = (
           questions_and_answers: { answer: string; position: number; question: string }[] = [],
           startTime?: string,
@@ -191,9 +240,10 @@ export default function CalendlyEmbed({ defaultQualified = false }: { defaultQua
             }),
           }).catch((err) => console.error("CALL_SHEDULED error:", err));
 
-          // Lead (CAPI) diferido con el mismo eventID que el pixel disparó al
-          // elegir horario — Meta lo deduplica y mejora el match con email/tel.
-          if (leadEventIdRef.current && currentEmail && currentPhone) {
+          // Fallback de Meta: solo si el envío inmediato no salió (variante sin
+          // form, donde email/phone recién llegan con el invitee). Best effort:
+          // si el redirect ya ocurrió este código no llega a correr.
+          if (!metaSent && leadEventIdRef.current && (currentEmail || currentPhone)) {
             fetch("/api/track/lead", {
               method: "POST",
               keepalive: true,
@@ -209,12 +259,8 @@ export default function CalendlyEmbed({ defaultQualified = false }: { defaultQua
             }).catch((err) => console.error("CAPI Lead error:", err));
           }
 
-          // Meta — solo si calificado
-          if (isQualified === "true") {
-            if (typeof window !== "undefined" && typeof (window as any).fbq === "function") {
-              (window as any).fbq("track", "Schedule", {}, { eventID: eventId });
-            }
-
+          // Fallback del Schedule CAPI (mismo caso que arriba)
+          if (!metaSent && isQualified === "true") {
             fetch("/api/track/qualified-shedule", {
               method: "POST",
               keepalive: true,
