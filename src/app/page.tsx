@@ -90,6 +90,7 @@ export default function Home() {
           <p className="text-white/80 text-center mt-2">
             Para que tu cuerpo acompañe el éxito que ya tenés en otras áreas de tu vida
           </p>
+          {/* Video de VSL — comentado temporalmente para testear la landing sin video
           <section className="relative">
             <div className="bg-[#131313] p-1 pt-0 border-1 border-[var(--primary)] overflow-clip rounded-[12px] md:rounded-[16px] border-[var(--primary)] mt-6 max-w-[750px] mx-auto">
               <div className="p-2 text-center text-[12px] uppercase text-[var(--text-primary)] tracking-widest bg-[#131313]">
@@ -104,11 +105,17 @@ export default function Home() {
                 ></iframe>
               </div>
             </div>
-          </section>
+          </section> */}
+          {/* Texto original con el video activo:
           <p className="mt-6 text-center text-[14px] mx-auto max-w-[350px]">
             <strong className="uppercase tracking-widest">Paso 2 de 2:</strong>{" "}
             <span className="text-white/80">
               Agenda la reunión de Diagnóstico
+            </span>
+          </p> */}
+          <p className="mt-6 text-center text-[14px] mx-auto max-w-[350px]">
+            <span className="text-white/80">
+              Agendá tu reunión de Diagnóstico
             </span>
           </p>
 
